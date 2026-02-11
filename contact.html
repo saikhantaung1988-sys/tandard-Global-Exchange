@@ -611,13 +611,13 @@
 </section>
 
 <div class="chat-input-area">
-    <button class="action-btn">
+    <button class="action-btn" onclick="handleAttachment()">
         <img src="assets/media/support_icons/plus.svg" class="icon-svg" alt="Attach">
     </button>
-    
-    <input type="text" id="user-msg-input" class="chat-input" placeholder="Type your message...">
-    
-    <button class="send-btn" id="send-msg-btn">
+
+    <input type="text" id="chat-input" placeholder="Type a message..." style="flex:1; border:none; background:transparent; color:white; padding:0 10px; outline:none;">
+
+    <button class="send-btn" id="send-msg-btn" onclick="sendMessage()">
         <img src="assets/media/support_icons/sent.svg" class="send-icon" alt="Send">
     </button>
 </div>
