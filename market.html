@@ -484,9 +484,11 @@
             <div class="compact-box" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0 8px; height: 40px; display: flex; align-items: center; justify-content: space-between;">
                 <span class="label" style="font-size: 9px; color: #888; font-weight: bold; text-transform: uppercase;">Time</span>
                 <div class="time-group" style="display: flex; gap: 3px;">
-                    <button class="time-btn" style="background: transparent; border: 1px solid rgba(255,255,255,0.15); color: #ccc; border-radius: 4px; padding: 2px 6px; font-size: 10px; cursor: pointer;">60s</button>
-                    <button class="time-btn active" style="background: #005ED3; border: 1px solid #005ED3; color: #fff; border-radius: 4px; padding: 2px 6px; font-size: 10px; cursor: pointer;">120s</button>
-                    <button class="time-btn" style="background: transparent; border: 1px solid rgba(255,255,255,0.15); color: #ccc; border-radius: 4px; padding: 2px 6px; font-size: 10px; cursor: pointer;">180s</button>
+                    <<button class="time-btn" onclick="selectTime(60, this)" style="background: transparent; border: 1px solid rgba(255,255,255,0.15); color: #ccc; border-radius: 4px; padding: 2px 6px; font-size: 10px; cursor: pointer;">60s</button>
+    
+    <button class="time-btn active" onclick="selectTime(120, this)" style="background: #005ED3; border: 1px solid #005ED3; color: #fff; border-radius: 4px; padding: 2px 6px; font-size: 10px; cursor: pointer;">120s</button>
+    
+    <button class="time-btn" onclick="selectTime(180, this)" style="background: transparent; border: 1px solid rgba(255,255,255,0.15); color: #ccc; border-radius: 4px; padding: 2px 6px; font-size: 10px; cursor: pointer;">180s</button>
                 </div>
             </div>
 
@@ -501,12 +503,12 @@
         </div>
 
         <div class="btn-row" style="display: flex; gap: 8px;">
-            <button class="btn-main btn-buy" style="flex: 1; height: 60px; border: none; border-radius: 8px; background: #26a17b; color: white; font-weight: bold; font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; box-shadow: 0 4px 10px rgba(38, 161, 123, 0.2);">
-                Buy <i class="fa-solid fa-arrow-up" style="font-size: 10px;"></i>
-            </button>
-            <button class="btn-main btn-sell" style="flex: 1; height: 60px; border: none; border-radius: 8px; background: #e04f60; color: white; font-weight: bold; font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; box-shadow: 0 4px 10px rgba(224, 79, 96, 0.2);">
-                Sell <i class="fa-solid fa-arrow-down" style="font-size: 10px;"></i>
-            </button>
+    <button class="btn-main btn-buy" onclick="handleTradeClick('big')" style="flex: 1; height: 60px; border: none; border-radius: 8px; background: #26a17b; color: white; font-weight: bold; font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; box-shadow: 0 4px 10px rgba(38, 161, 123, 0.2);">
+        Buy <i class="fa-solid fa-arrow-up" style="font-size: 10px;"></i>
+    </button>
+            <button class="btn-main btn-sell" onclick="handleTradeClick('small')" style="flex: 1; height: 60px; border: none; border-radius: 8px; background: #e04f60; color: white; font-weight: bold; font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; box-shadow: 0 4px 10px rgba(224, 79, 96, 0.2);">
+        Sell <i class="fa-solid fa-arrow-down" style="font-size: 10px;"></i>
+    </button>
         </div>
 
     </div>
