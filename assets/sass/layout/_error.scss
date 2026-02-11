@@ -1,0 +1,43 @@
+.error-sec{
+    @include media-query(1024px){
+        height: 37.39vh;
+        display: flex;
+        align-items: center;
+    }
+    @include media-query(992px){
+        height: auto;
+    }
+    .error-wrapper{
+        text-align: center;
+        
+        .error-block{
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            place-items: center;
+            
+            h2{ 
+                background: linear-gradient(90deg, #005ED3 0%, #02EBFD 100%);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                font-size: clamp(96px, 14.792vw, 420px);
+                font-style: normal;
+                font-weight: 700;
+                line-height: 100%;
+                color: $accent-1;
+            }
+            .vector-image{
+                width: clamp(72px, 11.302vw, 450px);
+                height: clamp(72px, 11.302vw, 450px);
+            }
+        }
+        p{
+            br{
+                @include media-query(575px){
+                    display: none;
+                }
+            }
+        }
+    }
+}

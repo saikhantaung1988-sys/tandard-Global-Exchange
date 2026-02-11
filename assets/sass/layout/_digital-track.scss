@@ -1,0 +1,113 @@
+.digital-track-sec {
+    position: relative;
+    overflow-x: hidden;
+    padding-bottom: clamp(96px, 10.417vw, 320px);
+
+    .gradient-circle {
+        overflow-x: hidden;
+        position: absolute;
+        top: 25%;
+        left: 10%;
+        width: 19.375vw;
+        height: 19.375vw;
+        border-radius: 50%;
+        opacity: 0.5;
+        background: linear-gradient(90deg, #005ED3 32.64%, #02EBFD 72.04%, #02EBFD 78.64%);
+        filter: blur(181.7421875px);
+        animation: glowingCircle 24s infinite ease-in;
+        transition: $transition;
+    }
+
+    .digital-track-wrapper {
+        padding: clamp(24px, 2.5vw, 64px) clamp(12px, 1.25vw, 48px);
+        border-radius: $br-32;
+        background: rgba(27, 27, 29, 0.20);
+        backdrop-filter: blur(6px);
+
+        .tracker-block {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: clamp(12px, 1.25vw, 48px);
+            border-radius: $br-16;
+            @include media-query(490px){
+                gap: 24px;
+            }
+        }
+    }
+
+    .digital-currency-wrapper {
+        border-radius: $br-32;
+        background: rgba(27, 27, 29, 0.20);
+        backdrop-filter: blur(6px);
+        padding: clamp(12px, 1.25vw, 32px);
+
+        .digital-currency-block {
+            padding: clamp(8px, 0.625vw, 24px) clamp(12px, 1.25vw, 32px);
+            background: $light-black;
+            border-radius: $br-16;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 8px 0;
+            
+        }
+
+        .currency-chart {
+            padding: clamp(12px, 0.625vw, 24px) clamp(16px, 1.25vw, 32px);
+            background: $light-black;
+            border-radius: $br-16;
+            margin: 8px 0;
+        }
+
+        .currency-slider {
+            .slick-track {
+                display: flex;
+                flex-direction: column;
+                align-items: end;
+            }
+
+            .slick-slide {
+                width: 70% !important;
+                transform: scale(0.9, 0.9);
+                transform-origin: right;
+                transition: transform .3s ease;
+
+                &.slick-current,
+                &.slick-current-clone-animate {
+                    transform: scale(1, 1);
+                    position: relative;
+
+                    &::before {
+                        transition: transform .3s ease;
+                        content: url(../media/vector/tick-line.png);
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        transform: translate(-100%, -50%);
+                        @include media-query(490px){
+                            width: 40%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes glowingCircle {
+    30% {
+        top: 30%;
+        left: 30%;
+    }
+
+    60% {
+        top: 45%;
+        left: 60%;
+    }
+
+    90% {
+        top: 20%;
+        left: 30%;
+    }
+}

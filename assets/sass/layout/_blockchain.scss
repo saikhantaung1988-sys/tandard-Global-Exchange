@@ -1,0 +1,76 @@
+.blockchain-sec {
+    .blockchain-numbers {
+        position: relative;
+
+        .circle-vector {
+            width: clamp(290px, 22.083vw, 640px);
+            height: clamp(270px, 21.563vw, 620px);
+            filter: blur(20px);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: circularAnim 12s infinite ease-in;
+            overflow-x: hidden;
+        }
+
+        .number-block {
+            padding: clamp(16px, 1.458vw, 32px) clamp(24px, 2.917vw, 96px);
+            border-radius: $br-24;
+            background: rgba(27, 27, 29, 0.20);
+            backdrop-filter: blur(8px);
+
+            h3 {
+                background: linear-gradient(90deg, #005ED3 0%, #02EBFD 27%);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                font-style: italic;
+            }
+        }
+    }
+    @keyframes circularAnim {
+        0% {
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+    
+        100% {
+            transform: translate(-50%, -50%) rotate(-360deg);
+        }
+    }
+}
+
+.blockchain-slider-sec{
+    .blockchain-slider-wrapper{
+        position: relative;
+        .blockchain-slider{
+            .slider-arrows{
+                .arrow-btn{
+                    position: absolute ;
+                    &.btn-prev{
+                        top: 50%;
+                        left: 0;
+                        transform: translate(-50%, 50%);
+                        @include media-query(1024px){
+                            left: 40px !important;
+                        }
+                    }
+                    &.btn-next{
+                        top: 50%;
+                        right: 0;
+                        transform: translate(-50%, 50%);
+                        @include media-query(1024px){
+                            right: 40px !important;
+                        }
+                    }
+                }
+            }
+            .blockchain-block{
+                padding: clamp(12px, 1.25vw, 32px) clamp(48px, 5.938vw, 180px);
+                border-radius: $br-32;
+                background: $accent-1;
+                margin: 0 8px;
+            }
+        }
+    }
+}

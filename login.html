@@ -1,0 +1,271 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | SGX</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/app.css">
+
+    <style>
+
+        :root {
+
+            --neon-primary: #00ff9d;
+
+            --neon-accent: #00f3ff;
+
+        }
+
+
+
+        body {
+
+            font-family: 'Outfit', sans-serif;
+
+            /* 🔥 မင်းရဲ့ပုံကို Center မှာထားပြီး Cover လုပ်ထားမယ် */
+
+            background: url('assets/media/allsign.jpg') no-repeat center center fixed;
+
+            background-size: cover; 
+
+            height: 100vh;
+
+            display: flex; align-items: center; justify-content: center;
+
+            overflow: hidden;
+
+            margin: 0;
+
+        }
+
+
+.glass-fit-card {
+    /* ၁။ နောက်ခံအရောင် (မင်းမူလကုဒ်အတိုင်း) */
+    background: rgba(0, 0, 0, 0.4); 
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    /* ၂။ Border (မင်းမူလကုဒ်အတိုင်း) */
+    border: 1px solid rgba(255, 255, 255, 0.05); 
+    box-shadow: none !important;
+
+    /* 🔥 ၃။ SIZE ပြင်သည့်နေရာ (ဒီဂဏန်းကို လိုသလို ထပ်တိုးနိုင်သည်) */
+    max-width: 450px; /* မူလက 320px ပါ။ 450px သို့မဟုတ် 500px ထားရင် ပိုကြီးမယ် */
+    
+    width: 100%; /* Mobile မှာ screen အပြည့်ဖြစ်အောင် width ထည့်ပေးထားတာ ပိုကောင်းတယ် */
+    padding: 40px 35px; /* Size ကြီးသွားလို့ Padding ကိုလည်း နည်းနည်း တိုးပေးလိုက်တယ် */
+    
+    border-radius: 12px; /* ထောင့်ကွေးလေးပါ ထည့်ပေးလိုက်တယ် (Optional) */
+}
+
+/* SVG Logo အတွက် CSS */
+
+.logo-img {
+
+    width: 150px; /* 1. လိုချင်သလောက် Size ညှိပါ (ဥပမာ 80px သို့ 100px) */
+
+    height: auto; /* အချိုးအစားမပျက်အောင် ထိန်းသိမ်းခြင်း */
+
+    display: block; /* Block element အဖြစ်ပြောင်းမယ် */
+
+    margin-left: 0; /* 2. ဘယ်ဘက်ထောင့်ကပ်ခြင်း */
+
+    margin-right: auto; /* ညာဘက်ကို တွန်းထုတ်ခြင်း */
+
+    margin-bottom: 20px; /* Logo အောက်က စာသားနဲ့ ခွာခြင်း */
+
+    
+
+    /* တကယ်လို့ ကဒ်ရဲ့ အပေါ်စွန်းနဲ့ အရမ်းကပ်နေရင် ဒါကိုဖွင့်ပါ */
+
+    /* margin-top: 10px; */
+
+}
+
+
+
+/* Title ကိုလည်း ဘယ်ဘက်ကပ်ချင်ရင် ဒါကိုထည့်ပါ (Optional) */
+
+.glass-fit-card .title {
+
+    text-align: left;
+
+    margin-bottom: 25px;
+
+}
+
+
+
+ .title { 
+
+            font-family: 'Rajdhani', sans-serif; font-weight: 700; color: #fff; 
+
+            letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; font-size: 22px;
+
+            text-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+        }
+
+        /* Inputs Styling (Transparent) */
+
+        .input-group-custom { margin-bottom: 12px; text-align: left; }
+
+        
+
+        .form-label {
+
+            font-size: 10px; color: var(--neon-accent); font-weight: 700; 
+
+            margin-bottom: 3px; display: block; letter-spacing: 1px; font-family: 'Rajdhani';
+
+            text-shadow: 0 0 5px rgba(0,0,0,0.8); /* စာဖတ်ရလွယ်အောင် Shadow ခံတယ် */
+
+        }
+
+
+
+        .form-control-custom {
+
+            width: 100%;
+
+            /* Input နောက်ခံကိုပါ ဖျောက်လိုက်တယ် */
+
+            background: rgba(255, 255, 255, 0.05); 
+
+            border: 1px solid rgba(255, 255, 255, 0.15);
+
+            border-radius: 8px;
+
+            padding: 10px 15px;
+
+            color: #fff;
+
+            font-size: 13px;
+
+            transition: all 0.3s;
+
+        }
+
+
+
+        .form-control-custom:focus {
+
+            outline: none;
+
+            border-color: var(--neon-primary);
+
+            background: rgba(0, 0, 0, 0.4); /* ရိုက်နေရင် နည်းနည်းမဲသွားမယ် */
+
+            box-shadow: 0 0 10px rgba(0, 255, 157, 0.2);
+
+        }
+
+        .form-control-custom::placeholder { color: rgba(255, 255, 255, 0.3); }
+
+
+
+        /* Neon Button */
+
+        .btn-neon {
+
+            width: 100%;
+
+            background: linear-gradient(135deg, var(--neon-primary), #00b871);
+
+            border: none;
+
+            padding: 12px;
+
+            border-radius: 8px;
+
+            color: #000;
+
+            font-family: 'Rajdhani', sans-serif;
+
+            font-weight: 700;
+
+            font-size: 16px;
+
+            letter-spacing: 1px;
+
+            margin-top: 10px;
+
+            box-shadow: 0 0 15px rgba(0, 255, 157, 0.3);
+
+            transition: 0.3s;
+
+        }
+
+        .btn-neon:hover {
+
+            transform: scale(1.02);
+
+            box-shadow: 0 0 25px rgba(0, 255, 157, 0.6);
+
+        }
+
+
+
+        .footer-link {
+
+            display: block; margin-top: 15px; color: #ccc; font-size: 12px; text-decoration: none;
+
+        }
+
+        .footer-link span { color: var(--neon-primary); font-weight: 700; }
+
+
+
+        /* Mobile Adjustments */
+
+        @media (max-width: 400px) {
+
+            .glass-fit-card { max-width: 90%; padding: 20px; }
+
+        }
+
+    </style>
+</head>
+<body class="auth-body">
+
+    <div class="glass-fit-card">
+        <img src="assets/media/logomain.svg" alt="Logo" class="logo-img">
+        
+        <h2 class="title">Welcome Back</h2>
+
+        <form onsubmit="event.preventDefault(); handleLogin()">
+            
+            <div class="input-group-custom">
+                <label class="form-label">PHONE NUMBER</label>
+                <input type="text" id="login-phone" class="form-control-custom" placeholder="09xxxxxxxxx" required>
+            </div>
+
+            <div class="input-group-custom">
+                <label class="form-label">PASSWORD</label>
+                <input type="password" id="login-password" class="form-control-custom" placeholder="••••••••" required>
+            </div>
+
+            <div class="d-flex justify-content-between mb-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="remember">
+                    <label class="form-check-label text-white-50" style="font-size: 0.8rem;" for="remember">Remember me</label>
+                </div>
+                <a href="#" class="text-neon" style="font-size: 0.8rem; text-decoration: none;">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="btn-neon btn-login">LOGIN</button>
+        </form>
+
+        <a href="register.html" class="footer-link">
+            New here? <span>Create Account</span>
+        </a>
+    </div>
+
+    <script src="https://unpkg.com/@supabase/supabase-js@2/dist/supabase.min.js"></script>
+    <script src="assets/js/core.js"></script>
+    <script src="assets/js/auth.js"></script>
+
+</body>
+</html>

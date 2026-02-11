@@ -1,0 +1,66 @@
+.blog-wrapper{
+    .blog-detail-wrapper{
+        .qoutes{
+            border-radius: $br-10;
+            border-left: 2px solid $accent-2;
+            background: rgba(235, 235, 255, 0.05);
+            backdrop-filter: blur(12px);
+            padding: clamp(20px, 1.667vw, 48px);
+            .author-name{
+                display: flex;
+                align-items: center;
+                gap: $gap-12;
+                &::before{
+                    content: '';
+                    background: $accent-2;
+                    width: clamp(16px, 1.25vw, 48px);
+                    height: 1px;
+                }
+            }
+        }
+    }
+    .tag-label{
+        padding: 8px 16px;
+        border-radius: $br-48;
+        background: $light-gray;
+        color: $white;
+        transition: $transition;
+        &:hover{
+            color: $white;
+            background: $accent-1;
+            transition: $transition;
+        }
+    }
+}
+.review-area{
+    .review-block{
+        display: flex;
+        align-items: flex-start;
+        gap: $gap-16;
+        
+        &.block-2{
+            padding-left: clamp(32px, 4.3vw, 120px);
+        }
+        .image-box{
+            display: flex;
+            flex-shrink: 0;
+            img{
+                border-radius: 50%;
+                width: clamp(32px, 3.33vw, 96px);
+            }
+        }
+        .text-box{
+            .reply-btn{
+                background: $medium-black;
+                color: $white;
+                transition: $transition;
+                padding: 8px clamp(16px, 1.25vw, 48px);
+                border-radius: $br-4;
+                &:hover{
+                    background: $accent-1;
+                    transition: $transition;
+                }
+            }
+        }
+    }
+}

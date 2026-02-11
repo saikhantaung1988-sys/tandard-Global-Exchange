@@ -1,0 +1,82 @@
+.about-html{
+    overflow-x: hidden;
+}
+.about-section {
+    @include media-query(992px){
+        padding: 128px 0;
+    }
+    .about-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @include media-query(1024px){
+            padding-right: clamp(64px, 8.203vw, 120px);
+        }
+        @include media-query(992px){
+            flex-direction: column;
+            padding: 0;
+        }
+
+        .box-wrapper {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 10.521vw;
+            @include media-query(992px){
+                flex-direction: row;
+            }
+            .about-text-box{
+                width: clamp(120px, 12.396vw, 350px);
+                @include media-query(992px){
+                    width: auto;
+                }
+                .h1{
+                    background: linear-gradient(90deg, #005ED3 0%, #02EBFD 100%);
+                    background-clip: text;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    font-family: $font-sec;
+                    text-wrap: nowrap;
+                }
+                p{
+                    text-wrap: nowrap;
+                    @include media-query(576px){
+                        text-wrap: wrap;
+                    }
+                }
+            }
+        }
+        .about-image{
+            position: relative;
+            h2{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-wrap: nowrap;
+            }
+            // img{
+            //     animation: play 4s steps(16) infinite;
+            // }
+        }
+    }
+
+    // @keyframes play {
+    //     0% {
+    //         transform: rotate(45deg);
+    //     }
+
+    //     25% {
+    //         transform: rotate(90deg);
+    //     }
+    //     50% {
+    //         transform: rotate(180deg);
+    //     }
+    //     75% {
+    //         transform: rotate(260deg);
+    //     }
+    //     100% {
+    //         transform: rotate(360deg);
+    //     }
+    // }
+}

@@ -1,0 +1,75 @@
+
+.gradient-bg{
+    position: relative;
+    
+    .gradient-image{
+        pointer-events: none;
+        width: 34.844vw;
+        height: 81.406vw;
+        filter: blur(40px);
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        &.image-2{
+            left: 0;
+        }
+    }
+}
+
+.page-gardient-circle {
+    overflow: hidden;
+    position: absolute;
+    top: 5%;
+    left: -50%;
+    width: 67.448vw;
+    height: 67.448vw;
+    border-radius: 50%;
+    opacity: 0.25;
+    background: linear-gradient(90deg, #005ED3 32.64%, #02EBFD 72.04%, #02EBFD 78.64%);
+    filter: blur(181.7421875px);
+    animation: graidentCircle 18s infinite ease-in;
+    pointer-events: none;
+}
+
+.page-gardient-circle-2 {
+    pointer-events: none;
+    overflow: hidden;
+    position: absolute;
+    top: 5%;
+    right: -50%;
+    width: 67.448vw;
+    height: 67.448vw;
+    border-radius: 50%;
+    opacity: 0.3;
+    background: linear-gradient(90deg, #005ED3 32.64%, #02EBFD 72.04%, #02EBFD 78.64%);
+    filter: blur(181.7421875px);
+    animation: graidentCircle2 18s infinite ease-in;
+}
+@keyframes graidentCircle {
+    30% {
+        top: 30%;
+    }
+
+    60% {
+        top: 45%;
+    }
+
+    90% {
+        top: 20%;
+    }
+}
+
+@keyframes graidentCircle2 {
+    30% {
+        top: 0%;
+    }
+
+    60% {
+        top: 60%;
+    }
+
+    90% {
+        top: 30%;
+    }
+}

@@ -1,0 +1,33 @@
+.achievement-section{
+    .counter-container{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @include media-query(576px){
+            justify-content: unset;
+            gap: $gap-32;
+        }
+        .counter-count{
+            .h1{
+                background: linear-gradient(90deg, #005ED3 0%, #02EBFD 100%);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                font-family: $font-sec;
+                font-size: clamp(46px, 3.594vw, 118px); /* 69px */
+                font-style: normal;
+                font-weight: 700;
+                line-height: 120%; /* 96px */
+                letter-spacing: -2.1px;
+
+                @include media-query(1199px) {
+                    font-size: clamp(42px, 4.003vw, 69px); /* 48px */
+                }
+
+                @include media-query(820px) {
+                    font-size: clamp(36px, 4.878vw, 54px); /* 40px */
+                }
+            }
+        }
+    }
+}

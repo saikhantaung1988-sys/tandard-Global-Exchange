@@ -1,0 +1,126 @@
+.buy-sell-section {
+    .card-wrapper{
+        position: relative;
+        .card-image{
+            position: absolute;
+            bottom: -24px;
+            left: -20px;    
+            width: 22.24vw;
+            height: clamp(420px, 30.104vw, 680px);
+            @include media-query(1699px){
+                left: 44px;
+            }
+            @include media-query(1399px){
+                bottom: -18px;
+            }
+            @include media-query(1024px){
+                left: -40px;
+                width: auto;
+            }
+            @include media-query(992px){
+                left: 82px;
+            }
+            @include media-query(490px){
+                left: 0;
+                bottom: 36px;
+                height: 360px;
+            }
+        }
+        .flip-card {
+            margin-left: auto;
+            margin-right: auto;
+            width: clamp(330px, 20.729vw, 680px);
+            height: clamp(420px, 27.813vw, 680px);
+            perspective: 1000px;
+            @include media-query(490px){
+                margin-right: 0;
+                width: 280px;
+
+            }
+    
+            &.flipped .flip-card-inner {
+                transform: rotateY(180deg);
+               
+            }
+    
+            .flip-card-inner {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                transition: transform 0.8s;
+                transform-style: preserve-3d;
+    
+                .button-bar {
+                    display: flex;
+                    align-items: center;
+                    gap: 5vw;
+    
+                    .flipButton,
+                    .flipButtonBack {
+                        color: $white;
+                        transition: $transition;
+    
+                        &:hover {
+                            color: $accent-2;
+                            transition: $transition;
+                        }
+                        &.active{
+                            color: $accent-2;
+                        }
+                    }
+                }
+    
+    
+                .flip-card-front,
+                .flip-card-back {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    backface-visibility: hidden;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    border-radius: $br-32;
+                    background: rgba(27, 27, 29, 0.50);
+                    backdrop-filter: blur(16px);
+                    padding: clamp(24px, 2.5vw, 64px) clamp(12px, 1.25vw, 48px);
+                    @include media-query(490px){
+                        height: 89%;
+                    }
+                }
+    
+                .flip-card-front {
+                    color: black;
+                }
+    
+                .flip-card-back {
+                    color: white;
+                    transform: rotateY(180deg);
+                }
+    
+                .input-container{
+                    display: flex;
+                    align-items: center;
+                    gap: $gap-32;
+                    background: rgba(20, 21, 22, 0.60);
+                    border-radius: $br-16;
+                    padding: 8px clamp(8px, 0.625vw, 24px);
+                    .input-block{
+                        input{
+                            border: 0;
+                            background: transparent !important;
+                        }
+                    }
+                    .drop-container{
+                        width: 100%;
+                    }
+                }
+            }
+            .cus-btn{
+                padding: clamp(8px, 0.625vw, 24px) clamp(24px, 2.5vw, 64px);
+            }
+        }
+    }
+}

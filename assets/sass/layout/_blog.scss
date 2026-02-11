@@ -1,0 +1,153 @@
+.blog-section {
+    position: relative;
+    overflow: hidden;
+
+    .blog-card {
+        border-radius: $br-32;
+
+        .blog-image {
+            border-radius: $br-32 $br-32 0 0;
+            overflow: hidden;
+
+            img {
+                object-fit: cover;
+                height: 100%;
+                -webkit-transition: all 0.35s linear 0s;
+                transition: all 0.35s linear 0s;
+            }
+
+            &.shine {
+                position: relative;
+                overflow: hidden;
+
+                &::before {
+                    background: linear-gradient(to right,
+                            fade_out(#fff, 1) 0%,
+                            fade_out(#fff, 0.7) 100%);
+                    content: "";
+                    display: block;
+                    height: 100%;
+                    left: -85%;
+                    position: absolute;
+                    top: 0;
+                    transform: skewX(25deg);
+                    width: 50%;
+                    z-index: 2;
+                    pointer-events: none;
+                }
+
+
+                @keyframes shine {
+                    100% {
+                        left: 125%;
+                    }
+                }
+            }
+        }
+
+        .blog-content {
+            border-radius: 0 0 $br-32 $br-32 ;
+            padding: clamp(16px, 1.25vw, 48px) clamp(12px, 0.833vw, 32px) clamp(16px, 1.25vw, 48px) clamp(12px, 0.833vw, 32px);
+
+            h6 {
+                transition: $transition;
+                color: $white;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                line-clamp: 2;
+                -webkit-box-orient: vertical;
+            }
+        }
+
+        &:hover {
+            .blog-image {
+                img {
+                    -webkit-transform: scale(1.1);
+                    transform: scale(1.1);
+                    -webkit-transition: all 0.35s linear 0s;
+                    transition: all 0.35s linear 0s;
+                }
+
+                &.shine {
+
+                    &:hover,
+                    &:focus {
+                        &::before {
+                            animation: shine 0.85s;
+                        }
+                    }
+                }
+            }
+
+            .blog-content {
+                h6 {
+                    transition: $transition;
+                    color: $accent-2;
+                }
+            }
+        }
+    }
+
+    .blog-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @include media-query(1099px){
+            flex-direction: column;
+            gap: $gap-24;
+        }
+
+        .topbar-container {
+            display: flex;
+            align-items: center;
+            gap: $gap-24;
+
+            .drop-container {
+                .wrapper-dropdown {
+                    border: 1px solid $white;
+                    border-radius: $br-16;
+                    padding: 8px clamp(16px, 0.998vw, 32px);
+                    .selected-display{
+                        color: $light-gray;
+                    }
+
+                    .topbar-dropdown {
+                        li {
+                            background: $light-black;
+
+                            &:hover {
+                                background: $accent-1;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .search-bar {
+                form {
+                    position: relative;
+
+                    input {
+                        border: 1px solid $white;
+                        border-radius: $br-16;
+                        padding: 10px 10px 10px 48px;
+                    }
+
+                    button {
+                        position: absolute;
+                        left: 12px;
+                        top: 10px;
+                        background: transparent;
+                        border: 0;
+
+                        i {
+                            color: $white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

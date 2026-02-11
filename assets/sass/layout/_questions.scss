@@ -1,0 +1,112 @@
+.question-section{
+    position: relative;
+    .gradient-circle{
+        overflow-x: hidden;
+        position: absolute;
+        top: 25%;
+        left: 10%;
+        width: 19.375vw;
+        height: 19.375vw;
+        border-radius: 50%;
+        opacity: 0.5;
+        background: linear-gradient(90deg, #005ED3 32.64%, #02EBFD 72.04%, #02EBFD 78.64%);
+        filter: blur(181.7421875px);
+        transition: $transition;
+        animation: gradientCircle 24s infinite ease-in;
+    }
+    @keyframes gradientCircle {
+        30% {
+            top: 30%;
+            left: 30%;
+        }
+    
+        60% {
+            top: 45%;
+            left: 60%;
+        }
+    
+        90% {
+            top: 20%;
+            left: 30%;
+        }
+    }
+    .faq-block {
+        padding: clamp(20px, 2.5vw, 64px);
+        padding-right: 26px;
+        background: transparent;
+        backdrop-filter: blur(30px);
+        border-radius: $br-64;
+        border: 1px solid $accent-1;
+        margin-bottom: clamp(12px, 1.25vw, 32px);
+        padding-right: clamp(32px, 3.33vw, 96px);
+        &.active {
+            background: $accent-1;
+        }
+        .accordion-button {
+            margin: 0;
+            position: relative;
+            padding: 0;
+            font-family: $font-primary;
+            font-weight: 500;
+            font-size: clamp(17px, 1.198vw, 32px); /* 23px */
+            line-height: 120%;
+            padding-right: 32px;
+    
+            @include media-query(490px) {
+                padding-right: 40px;
+            }
+    
+            &.collapsed {
+                border-radius: 0px;
+                padding: 0;
+                background: none;
+                margin: 0;
+    
+                @include media-query(490px) {
+                    padding-right: 40px;
+                }
+    
+    
+                &::after {
+                    background-image: none !important;
+                    color: $white;
+                    content: "\f078";
+                    font-family: $font-awesome;
+                }
+            }
+    
+            &:not(.collapsed) {
+                color: $white;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+            }
+    
+            &:focus {
+                border: none;
+                box-shadow: none;
+            }
+    
+            &::after {
+                content: "\f077";
+                font-family: $font-awesome;
+                background-image: none !important;
+                position: absolute;
+                right: -16px;
+                font-weight: 300;
+                font-size: 24px;
+                cursor: pointer;
+            }
+        }
+        p{
+            @include media-query(490px){
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                        line-clamp: 2; 
+                -webkit-box-orient: vertical;
+                line-height: 120%;
+            }
+        }
+    }
+}

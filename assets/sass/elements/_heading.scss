@@ -1,0 +1,11 @@
+
+.heading{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include media-query(490px){
+        flex-wrap: wrap;
+        row-gap: $gap-24;
+        align-items: flex-start;
+    }
+}

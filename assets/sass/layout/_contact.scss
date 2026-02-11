@@ -1,0 +1,54 @@
+.contact-section{
+    position: relative;
+    .background-image{
+        pointer-events: none;
+        overflow-x: hidden;
+        width: 98.958vw;
+        height: 59.531vw;
+        filter: blur(17.549999237060547px);
+        position: absolute;
+        top: 0;
+        left: 0;
+        animation: contactImage 12s infinite cubic-bezier(0.58, 0.02, 0.4, 0.99);
+    }
+    @keyframes contactImage {
+        0% {
+            transform: translateZ(0) perspective(0px) scaleY(1)
+        }
+
+        50% {
+            transform: translateZ(0) perspective(72px) scaleY(0.5)
+        }
+
+        100% {
+            transform: translateZ(0) perspective(0px) scaleY(1)
+        }
+    }
+    .contact-wrapper{
+        position: relative;
+        .contact-image-1{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30.729vw;
+        }
+        .contact-image-2{
+            width: 30.729vw;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+        .contact-form{
+            padding: clamp(24px ,3.33vw, 96px);
+            border-radius: $br-32;
+            border-radius: clamp(16px, 1.67vw, 48px) clamp(16px, 1.67vw, 48px) 0px 0px;
+            background: rgba(27, 27, 29, 0.50);
+            backdrop-filter: blur(120px);
+            .input-box{
+                label{
+                    padding-left: clamp(12px, 1.25vw, 48px);
+                }
+            }
+        }   
+    }
+}

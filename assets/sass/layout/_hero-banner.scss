@@ -1,0 +1,262 @@
+.hero-banner {
+  background: url("../media/backgrounds/hero-bg.png") no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: $light-black;
+  position: relative;
+  .hero-wrapper {
+    padding: 13.802vw 4.167vw 6.146vw;
+    
+    @include media-query(490px){
+      padding-top: 53.061vw;
+      padding-left: 8px;
+      padding-right: 8px;
+      gap: clamp(12px, 3.265vw, 32px);
+    }
+
+    .animation-circle {
+      position: absolute;
+      z-index: 5;
+      top: 52%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      @include media-query(490px){
+        top: 35%;
+      }
+
+      .outerCircle {
+        background-color: transparent;
+        border: 5px solid #02EBFD;
+        opacity: 0.9;
+        border-right: 5px solid transparent;
+        border-left: 5px solid transparent;
+        border-radius: 50%;
+        width: 38.448vw;
+        height: 38.448vw;
+        animation: spinPulse 18s infinite ease-in;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        @include media-query(490px){
+          width: 66.84vw;
+          height: 66.84vw;
+        }
+
+        &::after,
+        &::before {
+          content: "";
+          width: clamp(16px, 1.302vw, 48px);
+          height: clamp(16px, 1.302vw, 48px);
+          border-radius: 50%;
+          background: #02EBFD;
+          position: absolute;
+          filter: blur(2.5px);
+        }
+
+        &::after {
+          left: 4.75vw;
+          top: 13%;
+          @include media-query(1024px){
+            left: 4.147vw;
+          }
+          @include media-query(490px){
+            left: 27px;
+            bottom: 17%;
+          }
+        }
+
+        &::before {
+          right: 4.75vw;
+          bottom: 13%;
+          @include media-query(1024px){
+            right: 4.147vw;
+          }
+          @include media-query(490px){
+            right: 33px;
+            bottom: 11%;
+          }
+        }
+      }
+
+      .innerCircle {
+        background-color: transparent;
+        border: 5px solid #005ED3;
+        opacity: 0.9;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-radius: 50%;
+        width: 26.281vw;
+        height: 26.281vw;
+        animation: spinoffPulse 28s infinite ease-in;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        @include media-query(490px){
+          width: 40.816vw;
+          height: 40.816vw;
+        }
+
+        &::after,
+        &::before {
+          content: "";
+          width: clamp(16px, 1.302vw, 48px);
+          height: clamp(16px, 1.302vw, 48px);
+          border-radius: 50%;
+          background: #2d8bfd;
+          position: absolute;
+          filter: blur(2.5px);
+        }
+
+        &::after {
+          left: 3vw;
+          top: 12%;
+          @include media-query(1024px){
+            left: 2.144vw;
+          }
+        }
+
+        &::before {
+          right: 3vw;
+          bottom: 12%;
+          @include media-query(1024px){
+            right: 2.144vw;
+          }
+        }
+      }
+
+      @keyframes spinPulse {
+        0% {
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+
+        100% {
+          transform: translate(-50%, -50%) rotate(-360deg);
+        }
+      }
+
+      @keyframes spinoffPulse {
+        0% {
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+
+        100% {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+    }
+    .row{
+      position: relative;
+      z-index: 10;
+    }
+    .first-block {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 11.979vw;
+
+      @include media-query(992px) {
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+        padding: clamp(16px, 4.032vw, 64px);
+      }
+      @include media-query(490px) {
+        padding: 12px 0;
+        gap: 12px;
+      }
+
+      @include media-query(490px) {
+        flex-direction: column;
+      }
+      
+      &.v2 {
+        width: 100%;
+        align-items: end; 
+        @include media-query(575px) {
+          align-items: center;
+        }
+      }
+
+      .sub-block {
+        background: $black;
+        border-radius: $br-8;
+        padding: clamp(18px, 1.25vw, 48px);
+
+        &.currency-box {
+          display: inline-flex;
+          align-items: flex-start;
+          gap: $gap-10;
+
+          @include media-query(992px) {
+            align-items: center;
+          }
+        }
+
+        .people-box {
+          position: relative;
+
+          img {
+            border: 1px solid $black;
+            border-radius: 50%;
+
+            &:nth-child(2) {
+              margin-left: -16px;
+            }
+
+            &:nth-child(3) {
+              margin-left: -16px;
+            }
+          }
+        }
+      }
+    }
+
+    .hero-main-block {
+      h1 {
+        font-size: clamp(48px, 3.177vw, 72px);
+        /* 61px */
+        font-weight: 500;
+        line-height: 120%;
+        /* 114px */
+        letter-spacing: -2.85px;
+
+        @include media-query(1199px) {
+          font-size: clamp(40px, 4.003vw, 72px);
+          /* 48px */
+        }
+
+        @include media-query(820px) {
+          font-size: clamp(32px, 4.634vw, 58px);
+          /* 38px */
+          letter-spacing: -1.85px;
+        }
+      }
+
+      .crypto-container {
+        padding: clamp(12px, 0.833vw, 32px) clamp(16px, 2.5vw, 64px);
+        border-radius: $br-12;
+        border: 1px solid $lightest-gray;
+        border-bottom: 0;
+        border-right: 0;
+        background: rgba(250, 250, 250, 0.04);
+        backdrop-filter: blur(8px);
+        display: inline-flex;
+        align-items: center;
+        gap: $gap-24;
+        justify-content: center;
+        @include media-query(490px){
+          display: none;
+        }
+
+        .image-block {
+          display: flex;
+          align-items: center;
+          gap: $gap-24;
+        }
+      }
+    }
+  }
+}

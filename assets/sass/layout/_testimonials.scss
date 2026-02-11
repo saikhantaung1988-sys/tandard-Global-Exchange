@@ -1,0 +1,89 @@
+.testimonial-sec {
+    position: relative;
+
+    .testimonial-image {
+        overflow-x: hidden;
+        width: 97.917vw;
+        height: 40.729vw;
+        filter: blur(40px);
+        position: absolute;
+        top: 0;
+        left: 0;
+        animation: testimonialsImage 12s infinite cubic-bezier(0.58, 0.02, 0.4, 0.99);
+    }
+
+    @keyframes testimonialsImage {
+        0% {
+            transform: translateZ(0) perspective(0px) scaleY(0.90)
+        }
+
+        50% {
+            transform: translateZ(0) perspective(72px) scaleY(1.25)
+        }
+
+        100% {
+            transform: translateZ(0) perspective(0px) scaleY(1)
+        }
+    }
+
+    .testimonials-slider {
+        margin: 0 -12px;
+
+        .slick-dots {
+            li {
+                width: clamp(24px, 2.48vw, 64px);
+                height: clamp(6px, 0.469vw, 16px);
+                border-radius: 4px;
+                background: #D9D9D9;
+                transition: $transition;
+
+                &.slick-active {
+                    transition: $transition;
+                    width: 88px;
+                    background: $accent-1;
+                    @include media-query(490px){
+                        width: 48px;
+                    }
+                }
+
+                button {
+                    font-size: 0;
+                    width: clamp(24px, 2.48vw, 64px);
+                    height: clamp(6px, 0.469vw, 16px);
+                    border-radius: 4px;
+                    padding: 0;
+
+                    &:before {
+                        font-size: 0;
+                        width: auto;
+                        height: auto;
+                    }
+                }
+            }
+        }
+
+        .testimonial-block {
+            width: 306px;
+            background: rgba(27, 27, 29, 0.20);
+            backdrop-filter: blur(8px);
+            border-radius: $br-32;
+            padding: clamp(16px, 1.25vw, 40px) clamp(24px, 2.5vw, 64px);
+            margin: 0 12px;
+            transition: $transition;
+
+            img {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            &.slick-current {
+                width: clamp(450px, 33.125vw, 850px) !important;
+                transition: $transition;
+                background: $accent-1;
+                @include media-query(490px){
+                    width: 340px !important;
+                }
+            }
+        }
+    }
+}

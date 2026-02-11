@@ -1,0 +1,17 @@
+footer{
+    .newsletter-container{
+        form{
+            position: relative;
+            input{
+                @include media-query(1024px){
+                    padding: 18px !important;
+                }
+            }
+            button{
+                position: absolute;
+                right: 8px;
+                top: 8px;
+            }
+        }
+    }
+}

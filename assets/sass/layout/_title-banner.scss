@@ -1,0 +1,14 @@
+
+.title-banner{
+    background: url('../media/backgrounds/title-banner.png') no-repeat;
+    background-size: auto;
+    background-position: top;
+    background-attachment: fixed;
+    height: clamp(260px, 23.385vw, 650px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h2{
+        padding-top: 64px;
+    }
+}
