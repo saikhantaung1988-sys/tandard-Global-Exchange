@@ -447,45 +447,83 @@
     </div>
 </header>
 
+<div class="chart-section"
+  style="flex:1; width:100%; position:relative; background:#050b1a; border-bottom:1px solid rgba(255,255,255,0.1); overflow:hidden;">
 
-<div class="chart-section" style="flex: 1; width: 100%; position: relative; background: #050b1a; border-bottom: 1px solid rgba(255,255,255,0.1); overflow: hidden;"> <div class="tradingview-widget-container" style="height:100%;width:100%"> <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div> <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async> { "symbols": [["BINANCE:BTCUSDT|1M"]], "chartOnly": false, "width": "100%", "height": "100%", "locale": "en", "colorTheme": "dark", "autosize": true, "showVolume": true, "hideDateRanges": false, "scalePosition": "right", "scaleMode": "Normal", "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif", "fontSize": "10", "noTimeScale": false, "valuesTracking": "1", "changeMode": "price-and-percent", "chartType": "areaticks", "maLineColor": "#2962FF", "maLineWidth": 1, "maLength": 9, "backgroundColor": "rgba(5, 11, 26, 1)", "widgetFontColor": "rgba(255, 255, 255, 1)", "lineWidth": 2, "lineType": 0, "dateRanges": ["1m|30", "3m|60", "12m|1D", "60m|1W", "all|1M"] } </script> </div> </div>
-      
-<div class="control-panel" style="padding: 10px 15px 1px 15px; background: #0b0e11; border-top: 1px solid rgba(255,255,255,0.1); flex-shrink: 0;">
-    <div class="container">
+  <div class="tradingview-widget-container" style="height:100%;width:100%">
+    <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
 
-        <div class="input-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px;">
+    <script
+  src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js"
+  onload="initTV()"></script>
 
-            <div class="compact-box" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0 8px; height: 40px; display: flex; align-items: center; justify-content: space-between;">
-                <span class="label" style="font-size: 9px; color: #888; font-weight: bold; text-transform: uppercase;">Time</span>
-                <div class="time-group" style="display: flex; gap: 3px;">
-                    <button class="time-btn" style="background: transparent; border: 1px solid rgba(255,255,255,0.15); color: #ccc; border-radius: 4px; padding: 2px 6px; font-size: 10px; cursor: pointer;">60s</button>
-                    <button class="time-btn active" style="background: #005ED3; border: 1px solid #005ED3; color: #fff; border-radius: 4px; padding: 2px 6px; font-size: 10px; cursor: pointer;">120s</button>
-                    <button class="time-btn" style="background: transparent; border: 1px solid rgba(255,255,255,0.15); color: #ccc; border-radius: 4px; padding: 2px 6px; font-size: 10px; cursor: pointer;">180s</button>
-                </div>
-            </div>
-
-            <div class="compact-box" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0 8px; height: 40px; display: flex; align-items: center; justify-content: space-between;">
-                <span class="label" style="font-size: 9px; color: #888; font-weight: bold; text-transform: uppercase;">Amount</span>
-                <div class="amount-group" style="display: flex; align-items: center; gap: 5px;">
-                    
-                    <input type="number" class="input-field" value="100" style="background: transparent; border: none; color: white; font-size: 14px; font-weight: bold; text-align: center; width: 100%; outline: none;">
-                </div>
-            </div>
-
-        </div>
-
-        <div class="btn-row" style="display: flex; gap: 8px;">
-            <button class="btn-main btn-buy" style="flex: 1; height: 60px; border: none; border-radius: 8px; background: #26a17b; color: white; font-weight: bold; font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; box-shadow: 0 4px 10px rgba(38, 161, 123, 0.2);">
-                Buy <i class="fa-solid fa-arrow-up" style="font-size: 10px;"></i>
-            </button>
-            <button class="btn-main btn-sell" style="flex: 1; height: 60px; border: none; border-radius: 8px; background: #e04f60; color: white; font-weight: bold; font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; box-shadow: 0 4px 10px rgba(224, 79, 96, 0.2);">
-                Sell <i class="fa-solid fa-arrow-down" style="font-size: 10px;"></i>
-            </button>
-        </div>
-
-    </div>
+<script>
+  function initTV() {
+    new TradingView.widget({
+      symbols: [["BINANCE:BTCUSDT|1M"]],
+      chartOnly: false,
+      width: "100%",
+      height: "100%",
+      locale: "en",
+      colorTheme: "dark",
+      autosize: true,
+      showVolume: true,
+      hideDateRanges: false,
+      scalePosition: "right",
+      scaleMode: "Normal",
+      fontFamily: "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+      fontSize: "10",
+      noTimeScale: false,
+      valuesTracking: "1",
+      changeMode: "price-and-percent",
+      chartType: "candlesticks"
+    });
+  }
+</script>
+  </div>
 </div>
 
+<div class="control-panel"
+  style="padding:10px 15px 1px; background:#0b0e11; border-top:1px solid rgba(255,255,255,0.1); flex-shrink:0;">
+
+  <div class="container">
+
+    <div class="input-row" style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:8px;">
+
+      <div class="compact-box" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:0 8px; height:40px; display:flex; align-items:center; justify-content:space-between;">
+        <span class="label" style="font-size:9px; color:#888; font-weight:bold; text-transform:uppercase;">Time</span>
+
+        <div class="time-group" style="display:flex; gap:3px;">
+          <button class="time-btn" data-time="60" type="button">60s</button>
+          <button class="time-btn active" data-time="120" type="button">120s</button>
+          <button class="time-btn" data-time="180" type="button">180s</button>
+        </div>
+      </div>
+
+      <div class="compact-box" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:0 8px; height:40px; display:flex; align-items:center; justify-content:space-between;">
+        <span class="label" style="font-size:9px; color:#888; font-weight:bold; text-transform:uppercase;">Amount</span>
+
+        <div class="amount-group" style="display:flex; align-items:center; gap:5px;">
+          <input id="trade-amount" type="number" min="1" step="1" value="100"
+            class="input-field"
+            style="background:transparent; border:none; color:white; font-size:14px; font-weight:bold; text-align:center; width:100%; outline:none;">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="btn-row" style="display:flex; gap:8px;">
+      <button id="btn-buy" class="btn-main btn-buy" type="button">
+        Buy <i class="fa-solid fa-arrow-up"></i>
+      </button>
+
+      <button id="btn-sell" class="btn-main btn-sell" type="button">
+        Sell <i class="fa-solid fa-arrow-down"></i>
+      </button>
+    </div>
+
+  </div>
+</div>
 
    <div class="gradient-bg">
             <svg class="gradient-image" width="669" height="1563" viewBox="0 0 669 1563" fill="none" xmlns="http://www.w3.org/2000/svg">
