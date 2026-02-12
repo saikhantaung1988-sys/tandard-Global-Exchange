@@ -611,13 +611,13 @@
 </section>
 
 <div class="chat-input-area">
-    <button class="action-btn">
+    <button class="attach-btn" onclick="triggerImageUpload()">
         <img src="assets/media/support_icons/plus.svg" class="icon-svg" alt="Attach">
     </button>
     
     <input type="text" id="user-msg-input" class="chat-input" placeholder="Type your message...">
     
-    <button class="send-btn" id="send-msg-btn">
+    <button class="send-btn" onclick="sendMessage()">
         <img src="assets/media/support_icons/sent.svg" class="send-icon" alt="Send">
     </button>
 </div>
@@ -1010,6 +1010,7 @@
     </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="assets/js/core.js"></script>
+<script src="assets/js/chat.js"></script>
 
 <script>
     // Login မဝင်ထားရင် Login စာမျက်နှာကို ပြန်ပို့မယ်
