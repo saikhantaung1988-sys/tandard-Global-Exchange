@@ -2326,7 +2326,6 @@
 
 </div>
 
-
 <script src="assets/js/vendor/jquery-3.6.3.min.js"></script>
     <script src="assets/js/vendor/bootstrap.min.js"></script>
     <script src="assets/js/vendor/jquery-validator.js"></script>
@@ -2337,34 +2336,42 @@
 <script src="assets/js/core.js"></script>
 
 <script>
-    // ၁။ Login ဝင်မထားရင် ကန်ထုတ်မယ်
-    checkAccess(); 
-
-    // ၂။ Data တွေကို Database ကနေ ဆွဲထုတ်မယ်
-    async function loadDashboard() {
-        const { data: { user } } = await db.auth.getUser();
-
-        if (user) {
-            // (က) Profiles Table မှ UID ယူမယ်
-            const { data: profile } = await db.from('profiles').select('*').eq('id', user.id).single();
-            if (profile) {
-                // Header မှာ UID ပြမယ့်နေရာ (ID ရှိရင် ထည့်ပါ)
-                const uidEl = document.getElementById('header-uid'); 
-                if (uidEl) uidEl.innerText = "UID: " + profile.uid;
-            }
-
-            // (ခ) Assets Table မှ ပိုက်ဆံ (Balance) ယူမယ်
-            const { data: asset } = await db.from('assets').select('*').eq('user_id', user.id).single();
-            if (asset) {
-                // Balance ပြမယ့်နေရာ (ID: user-balance သို့မဟုတ် total-balance)
-                const balanceEl = document.getElementById('user-balance'); 
-                if (balanceEl) balanceEl.innerText = asset.amount; // .toFixed(2) ထည့်လိုက ထည့်နိုင်သည်
-            }
-        }
+  (async () => {
+    // db ရှိမရှိ စစ် (မရှိရင် core.js ကိုစစ်)
+    if (typeof db === "undefined") {
+      console.error("db is not defined. Check core.js loading / variable name.");
+      return;
     }
 
-    loadDashboard();
+    // checkAccess က async ဖြစ်နိုင်လို့ await လုပ်
+    const r = checkAccess();
+    if (r instanceof Promise) await r;
 
+    // dashboard load
+    await loadDashboard();
+  })();
+
+  async function loadDashboard() {
+    const { data, error } = await db.auth.getUser();
+    if (error) { console.error("getUser error:", error); return; }
+
+    const user = data?.user;
+    if (!user) return;
+
+    const { data: profile, error: pErr } = await db
+      .from('profiles').select('*').eq('id', user.id).single();
+    if (pErr) console.error("profile error:", pErr);
+
+    const { data: asset, error: aErr } = await db
+      .from('assets').select('*').eq('user_id', user.id).single();
+    if (aErr) console.error("asset error:", aErr);
+
+    const uidEl = document.getElementById('header-uid');
+    if (uidEl && profile?.uid) uidEl.innerText = "UID: " + profile.uid;
+
+    const balanceEl = document.getElementById('user-balance');
+    if (balanceEl && asset?.amount != null) balanceEl.innerText = asset.amount;
+  }
 </script>
 
     </body>
