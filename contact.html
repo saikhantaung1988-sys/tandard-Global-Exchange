@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
    <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="SGX: Cryptocurrency Global Exchange to Buy, Trade & Invest in Crypto">
 <meta name="twitter:description" content="Discover why SGX is the world's best cryptocurrency exchange. Secure, low fees, trusted by millions of users worldwide.">
@@ -603,23 +603,730 @@
     .send-icon { width: 20px; height: 20px; filter: brightness(0) invert(1); }
 </style>
 
+<style>
+/* ====== V2 OVERRIDES (User App Only) ====== */
+
+/* Bottom nav ဖျောက် (ရှိရင်) */
+.bottom-nav, .nav-bottom, #bottomNav, #bottom-nav, .bottom-navigation {
+  display: none !important;
+}
+
+/* Input bar က bottom nav မရှောင်တော့ => bottom:0 */
+.chat-input-area {
+  bottom: 0 !important;
+}
+
+/* Chat section အောက် padding ကို input bar အတွက်ပဲထား (140px -> 95px) */
+.chat-section {
+  padding-bottom: 95px !important;
+}
+
+/* “Chat Started” demo text မပြချင် */
+.chat-date { display: none !important; }
+
+/* ====== NEW INPUT BAR LAYOUT ====== */
+.chat-input-area {
+  height: 70px;
+  padding: 10px 12px;
+  gap: 10px;
+}
+
+.chat-input-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.btn-icon {
+  width: 44px; height: 44px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.btn-icon img {
+  width: 22px; height: 22px;
+  opacity: 0.9;
+}
+
+.composer {
+  flex: 1;
+  height: 46px;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.10);
+  display: flex;
+  align-items: center;
+  padding: 0 10px 0 14px;
+  gap: 8px;
+}
+
+.composer input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  height: 44px;
+}
+
+.composer .divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255,255,255,0.12);
+  flex-shrink: 0;
+}
+
+.btn-send-inline {
+  width: 38px; height: 38px;
+  border-radius: 14px;
+  background: rgba(2,235,253,0.10);
+  border: 1px solid rgba(2,235,253,0.25);
+  display:flex; align-items:center; justify-content:center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.btn-send-inline img { width: 20px; height: 20px; }
+
+/* ====== MODALS / SHEETS (Premium dark) ====== */
+.backdrop {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+}
+
+.backdrop.show { display: flex; }
+
+.modal-card {
+  width: min(520px, 92vw);
+  border-radius: 18px;
+  background: rgba(11,14,17,0.92);
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 18px 60px rgba(0,0,0,0.6);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+}
+
+.modal-head {
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  padding: 14px 14px 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.modal-title {
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.4px;
+}
+
+.modal-close {
+  width: 38px; height: 38px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.10);
+  color: #fff;
+  cursor: pointer;
+}
+
+.modal-body { padding: 14px; }
+.row {
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 10px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 10px;
+}
+
+.row .label {
+  color: rgba(255,255,255,0.55);
+  font-size: 12px;
+  letter-spacing: 0.3px;
+}
+
+.row .value {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.row.readonly { opacity: 0.95; }
+
+.select-btn {
+  width: 100%;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.badge {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  color: rgba(255,255,255,0.85);
+}
+
+.amount-wrap {
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  width: 100%;
+}
+
+.amount-wrap input {
+  flex:1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 16px;
+}
+
+.modal-foot {
+  padding: 12px 14px 14px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.btn-primary {
+  width: 100%;
+  height: 46px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 600;
+  background: linear-gradient(135deg, #005ED3 0%, #02EBFD 100%);
+  box-shadow: 0 10px 24px rgba(0,94,211,0.25);
+}
+
+.btn-primary:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Transfer type sheet */
+.sheet {
+  position: fixed; inset: 0;
+  display: none;
+  z-index: 3500;
+  background: rgba(0,0,0,0.55);
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.sheet.show { display:flex; }
+
+.sheet-card {
+  width: min(560px, 98vw);
+  border-radius: 18px 18px 0 0;
+  background: rgba(11,14,17,0.96);
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 -18px 60px rgba(0,0,0,0.55);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+}
+
+.sheet-head {
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  padding: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.search {
+  padding: 12px 14px;
+}
+
+.search input {
+  width: 100%;
+  height: 44px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.10);
+  color: #fff;
+  outline: none;
+  padding: 0 14px;
+  font-size: 14px;
+}
+
+.list {
+  max-height: 52vh;
+  overflow: auto;
+  padding: 0 14px 14px;
+}
+
+.item {
+  width: 100%;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  padding: 12px 12px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.item .name { color:#fff; font-weight: 500; }
+.item .cur  { color: rgba(255,255,255,0.75); font-size: 12px; }
+
+/* Receipt picker overlay (for image send + slip upload) */
+.preview {
+  position: fixed; inset: 0;
+  display: none;
+  z-index: 4000;
+  background: rgba(0,0,0,0.85);
+}
+
+.preview.show { display:block; }
+
+.preview-top {
+  position: absolute;
+  top: 14px; right: 14px; left: 14px;
+  display:flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.preview-btn {
+  width: 44px; height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  cursor: pointer;
+}
+
+.preview-body {
+  position:absolute;
+  inset: 80px 14px 110px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.preview-body img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.preview-bottom {
+  position:absolute;
+  bottom: 18px; left: 0; right: 0;
+  display:flex;
+  justify-content:center;
+  pointer-events: none;
+}
+
+.preview-hint {
+  pointer-events: auto;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.8);
+  font-size: 12px;
+}
+
+/* Order card (simple premium table vibe) */
+.order-card {
+  width: min(92%, 520px);
+  border-radius: 18px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.10);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.order-card.wide { width: min(96%, 620px); }
+
+.order-head {
+  padding: 12px 14px;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.order-title {
+  color:#fff;
+  font-weight: 600;
+  text-align:center;
+  flex: 1;
+}
+
+.status-chip {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.85);
+}
+
+.status-chip.ok {
+  border-color: rgba(2,235,253,0.25);
+  background: rgba(2,235,253,0.10);
+}
+
+.order-body { padding: 10px 14px 14px; }
+
+.kv {
+  display:flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.kv:last-child { border-bottom: none; }
+
+.kv .k { color: rgba(255,255,255,0.55); font-size: 12px; }
+.kv .v { color: #fff; font-size: 13px; font-weight: 500; }
+
+.mini {
+  color: rgba(255,255,255,0.65);
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.upload-box {
+  margin-top: 12px;
+  border-radius: 16px;
+  border: 1px dashed rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.03);
+  padding: 14px;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.upload-title { color:#fff; font-weight: 600; font-size: 13px; }
+.upload-thumb {
+  width: 54px; height: 54px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  overflow: hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink: 0;
+}
+.upload-thumb img { width:100%; height:100%; object-fit: cover; display:none; }
+
+.upload-plus {
+  width: 44px; height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+
+/* ===== MOBILE FIT PATCH ===== */
+
+/* 1) Must-have viewport behavior support (CSS side) */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* 2) Bootstrap/container widths can cause side overflow on small screens */
+.container, #chat-messages-container {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* 3) Prevent any child from pushing layout wider than viewport */
+.chat-section, .chat-section * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* 4) Mobile-specific spacing + safe area */
+:root{
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+}
+
+@media (max-width: 520px){
+  /* reduce side padding so bubbles/cards don't overflow */
+  .chat-section { 
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    padding-top: calc(70px + var(--safe-top)) !important;
+    padding-bottom: calc(95px + var(--safe-bottom)) !important;
+  }
+
+  /* make message wrappers truly responsive */
+  .sent > div, .received > div { max-width: 92% !important; }
+
+  /* input bar fits */
+  .chat-input-area{
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    padding-bottom: calc(10px + var(--safe-bottom)) !important;
+  }
+
+  /* prevent iOS zoom & keep layout stable */
+  .chat-input, .composer input, .search input { font-size: 16px !important; }
+
+  /* if any element still causes overflow, force wrap */
+  .bubble { word-break: break-word; }
+}
+
+/* ===== MOBILE INPUT BAR FIT PATCH ===== */
+@media (max-width: 420px){
+  .chat-input-area{
+    padding: 10px 8px !important;
+  }
+
+  .chat-input-row{
+    width: 100% !important;
+    gap: 8px !important;
+  }
+
+  /* icon buttons ကိုနည်းနည်းသေး */
+  .btn-icon{
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 13px !important;
+  }
+  .btn-icon img{
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  /* textbox ကို space ပိုပေး (min-width 0 မရှိရင် overflow ဖြစ်တတ်) */
+  .composer{
+    min-width: 0 !important;
+    height: 42px !important;
+    padding: 0 8px 0 12px !important;
+  }
+
+  /* send ကိုလည်းနည်းနည်းသေး */
+  .btn-send-inline{
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 12px !important;
+  }
+  .btn-send-inline img{
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  /* input အကျယ်ကိုမတင်းစေ */
+  .composer input{
+    min-width: 0 !important;
+  }
+}
+
+
+
+/* icon premium micro-interactions (optional) */
+.icon-svg, .send-icon{
+  opacity: 0.85;
+  transition: transform .15s ease, opacity .15s ease;
+}
+.btn-icon:hover img, .btn-send-inline:hover img{
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+
+
+</style>
+
+
 <section class="chat-section">
     <div class="container" id="chat-messages-container">
-        <div class="chat-date">Chat Started</div>
         
         </div>
 </section>
 
 <div class="chat-input-area">
-    <button class="attach-btn" onclick="triggerImageUpload()">
-        <img src="assets/media/support_icons/plus.svg" class="icon-svg" alt="Attach">
+  <div class="chat-input-row">
+    <!-- PLUS -->
+    <button class="btn-icon" id="btnAttach" type="button" title="Attach">
+      <img src="assets/media/support_icons/plus.svg" alt="Plus">
     </button>
-    
-    <input type="text" id="user-msg-input" class="chat-input" placeholder="Type your message...">
-    
-    <button class="send-btn" onclick="sendMessage()">
-        <img src="assets/media/support_icons/sent.svg" class="send-icon" alt="Send">
+
+    <!-- TEXTBOX + SEND INSIDE -->
+    <div class="composer">
+      <input type="text" id="user-msg-input" class="chat-input" placeholder="Type your message..." />
+      <div class="divider"></div>
+      <button class="btn-send-inline" id="btnSend" type="button" title="Send">
+        <img src="assets/media/support_icons/send.svg" alt="Send">
+      </button>
+    </div>
+
+    <!-- DEPOSIT -->
+    <button class="btn-icon" id="btnDeposit" type="button" title="Deposit">
+      <img src="assets/media/support_icons/deposit.svg" alt="Deposit">
     </button>
+
+    <!-- WITHDRAWAL -->
+    <button class="btn-icon" id="btnWithdraw" type="button" title="Withdrawal">
+      <img src="assets/media/support_icons/withdrawal.svg" alt="Withdrawal">
+    </button>
+  </div>
+</div>
+
+<!-- hidden file input used by PLUS (chat image) -->
+<input id="filePicker" type="file" accept="image/*" hidden />
+
+
+
+<!-- Deposit Modal -->
+<div class="backdrop" id="depositModal">
+  <div class="modal-card">
+    <div class="modal-head">
+      <div class="modal-title">Deposit</div>
+      <button class="modal-close" id="closeDeposit" type="button">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="row readonly">
+        <div class="label">UID</div>
+        <div class="value" id="depUid">—</div>
+      </div>
+
+      <div class="row readonly">
+        <div class="label">User Name</div>
+        <div class="value" id="depUname">—</div>
+      </div>
+
+      <div class="row select-btn" id="openTransferPicker">
+        <div>
+          <div class="label">Transfer Type</div>
+          <div class="value" id="depTransferName">Select method</div>
+        </div>
+        <div class="badge" id="depCurrencyBadge">—</div>
+      </div>
+
+      <div class="row">
+        <div style="width:100%">
+          <div class="label">Amount</div>
+          <div class="amount-wrap">
+            <input id="depAmount" type="number" placeholder="0" min="0" />
+            <div class="badge" id="depAmountSuffix">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-foot">
+      <button class="btn-primary" id="btnSubmitDeposit" type="button" disabled>အော်ဒါတင်ရန်</button>
+    </div>
+  </div>
+</div>
+
+<!-- Withdrawal Modal -->
+<div class="backdrop" id="withdrawModal">
+  <div class="modal-card">
+    <div class="modal-head">
+      <div class="modal-title">Withdrawal</div>
+      <button class="modal-close" id="closeWithdraw" type="button">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="row readonly">
+        <div class="label">UID</div>
+        <div class="value" id="wdUid">—</div>
+      </div>
+
+      <div class="row readonly">
+        <div class="label">User Name</div>
+        <div class="value" id="wdUname">—</div>
+      </div>
+
+      <div class="row select-btn" id="openTransferPickerW">
+        <div>
+          <div class="label">Transfer Type</div>
+          <div class="value" id="wdTransferName">Select method</div>
+        </div>
+        <div class="badge" id="wdCurrencyBadge">—</div>
+      </div>
+
+      <!-- Transfer Address (No. + Name) -->
+      <div class="row">
+        <div style="width:100%">
+          <div class="label">Transfer Address</div>
+          <div class="amount-wrap">
+            <input id="wdAddrNo" type="text" placeholder="No." />
+            <input id="wdAddrName" type="text" placeholder="Name" />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div style="width:100%">
+          <div class="label">Amount</div>
+          <div class="amount-wrap">
+            <input id="wdAmount" type="number" placeholder="0" min="0" />
+            <div class="badge" id="wdAmountSuffix">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-foot">
+      <button class="btn-primary" id="btnSubmitWithdraw" type="button" disabled>အော်ဒါတင်ရန်</button>
+    </div>
+  </div>
+</div>
+
+<!-- Transfer Type Picker Sheet -->
+<div class="sheet" id="transferSheet">
+  <div class="sheet-card">
+    <div class="sheet-head">
+      <div class="modal-title">Choose Method</div>
+      <button class="modal-close" id="closeTransferSheet" type="button">✕</button>
+    </div>
+    <div class="search">
+      <input id="transferSearch" placeholder="Search..." />
+    </div>
+    <div class="list" id="transferList"></div>
+  </div>
+</div>
+
+<!-- Image preview overlay (used for chat image + slip upload) -->
+<div class="preview" id="imgPreview">
+  <div class="preview-top">
+    <button class="preview-btn" id="previewCancel" type="button">✕</button>
+    <button class="preview-btn" id="previewOk" type="button">✓</button>
+  </div>
+  <div class="preview-body">
+    <img id="previewImg" alt="preview" />
+  </div>
+  <div class="preview-bottom">
+    <div class="preview-hint" id="previewHint">Confirm image</div>
+  </div>
 </div>
      
 
@@ -1012,8 +1719,516 @@
 <script src="assets/js/core.js"></script>
 
 <script>
+/* ====== USER APP (content.html) UI LOGIC ONLY ====== */
+
+const $ = (id) => document.getElementById(id);
+
+// ---------- User Profile (read-only) ----------
+function getProfile() {
+  // မင်း project မှာ profile data ရှိရင် ဒီနေရာကိုချိတ်
+  // fallback: localStorage ထဲက uid/username
+  const uid = localStorage.getItem("profile_uid") || "—";
+  const uname = localStorage.getItem("profile_username") || "—";
+  return { uid, uname };
+}
+function paintProfile() {
+  const p = getProfile();
+  $("depUid").textContent = p.uid;
+  $("depUname").textContent = p.uname;
+  $("wdUid").textContent = p.uid;
+  $("wdUname").textContent = p.uname;
+}
+
+// ---------- Transfer Types (Text-only) ----------
+const TRANSFER_TYPES = [
+  { name: "Visa", currency: "USD" },
+  { name: "Master Card", currency: "USD" },
+  { name: "Crypto Coin", currency: "PENDING" }, // UI only (pending)
+  { name: "KBZ Bank", currency: "MMK" },
+  { name: "AYA Bank", currency: "MMK" },
+  { name: "CB Bank", currency: "MMK" },
+  { name: "YOMA Bank", currency: "MMK" },
+  { name: "AUB Bank", currency: "MMK" },
+  { name: "KBZ Pay", currency: "MMK" },
+  { name: "Wave Pay", currency: "MMK" },
+  { name: "CB Pay", currency: "MMK" },
+  { name: "AYA Pay", currency: "MMK" },
+  { name: "Other", currency: "" },
+];
+
+function norm(s){ return (s||"").trim().toLowerCase(); }
+
+function searchTypes(query) {
+  const q = norm(query);
+  if (!q) return TRANSFER_TYPES; // empty => show all
+  const matched = TRANSFER_TYPES.filter(t => norm(t.name).includes(q));
+  matched.sort((a,b)=>{
+    const an = norm(a.name), bn = norm(b.name);
+    const aStarts = an.startsWith(q) ? 0 : 1;
+    const bStarts = bn.startsWith(q) ? 0 : 1;
+    if (aStarts !== bStarts) return aStarts - bStarts;
+    return an.localeCompare(bn);
+  });
+  return matched; // filter-only
+}
+
+let transferTarget = "deposit"; // or "withdraw"
+let selectedDeposit = { name: "", currency: "" };
+let selectedWithdraw = { name: "", currency: "" };
+
+function renderTypeList(items){
+  const list = $("transferList");
+  list.innerHTML = items.map(t => `
+    <div class="item" data-name="${t.name}" data-currency="${t.currency}">
+      <div class="name">${t.name}</div>
+      <div class="cur">${t.currency || ""}</div>
+    </div>
+  `).join("");
+
+  list.querySelectorAll(".item").forEach(el=>{
+    el.addEventListener("click", ()=>{
+      const name = el.getAttribute("data-name");
+      const currency = el.getAttribute("data-currency");
+      if (transferTarget === "deposit") {
+        selectedDeposit = { name, currency };
+        $("depTransferName").textContent = name;
+        $("depCurrencyBadge").textContent = currency || "—";
+        $("depAmountSuffix").textContent = currency || "—";
+        validateDeposit();
+      } else {
+        selectedWithdraw = { name, currency };
+        $("wdTransferName").textContent = name;
+        $("wdCurrencyBadge").textContent = currency || "—";
+        $("wdAmountSuffix").textContent = currency || "—";
+        validateWithdraw();
+      }
+      hideSheet();
+    });
+  });
+}
+
+function showSheet(target){
+  transferTarget = target;
+  $("transferSearch").value = "";
+  renderTypeList(TRANSFER_TYPES);
+  $("transferSheet").classList.add("show");
+  $("transferSearch").focus();
+}
+function hideSheet(){ $("transferSheet").classList.remove("show"); }
+
+// ---------- Modals ----------
+function showModal(id){ $(id).classList.add("show"); paintProfile(); }
+function hideModal(id){ $(id).classList.remove("show"); }
+
+// Deposit modal
+$("btnDeposit").addEventListener("click", ()=> showModal("depositModal"));
+$("closeDeposit").addEventListener("click", ()=> hideModal("depositModal"));
+$("openTransferPicker").addEventListener("click", ()=> showSheet("deposit"));
+
+// Withdraw modal
+$("btnWithdraw").addEventListener("click", ()=> showModal("withdrawModal"));
+$("closeWithdraw").addEventListener("click", ()=> hideModal("withdrawModal"));
+$("openTransferPickerW").addEventListener("click", ()=> showSheet("withdraw"));
+
+// Transfer sheet close
+$("closeTransferSheet").addEventListener("click", hideSheet);
+$("transferSearch").addEventListener("input", ()=>{
+  const items = searchTypes($("transferSearch").value);
+  renderTypeList(items);
+});
+
+// ---------- Chat + Persistence ----------
+const chatBox = document.getElementById("chat-messages-container");
+const STORAGE_KEY = "chat_v2_items";
+const TTL_MS = 60 * 60 * 1000; // 1 hour
+
+function nowMs(){ return Date.now(); }
+function withinTTL(item){ return (nowMs() - item.ts) < TTL_MS; }
+
+function loadItems(){
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return [];
+    const arr = JSON.parse(raw);
+    return Array.isArray(arr) ? arr.filter(withinTTL) : [];
+  } catch(e){ return []; }
+}
+function saveItems(items){
+  const alive = items.filter(withinTTL);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(alive));
+}
+let items = loadItems();
+
+function scheduleCleanup(){
+  // cleanup every minute (minute-only logic)
+  setInterval(()=>{
+    items = items.filter(withinTTL);
+    saveItems(items);
+    renderAll();
+  }, 60*1000);
+}
+
+function escapeHtml(s){
+  return (s||"").replace(/[&<>"']/g, m => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[m]));
+}
+
+function addItem(item){
+  items.push(item);
+  saveItems(items);
+  renderAll(true);
+}
+
+function renderAll(scrollBottom=false){
+  // clear all dynamic nodes, keep container
+  chatBox.innerHTML = `
+    <div style="height:8px"></div>
+  `;
+
+  items.filter(withinTTL).forEach(it=>{
+    if (it.kind === "text") renderText(it);
+    if (it.kind === "img")  renderImg(it);
+    if (it.kind === "order_pending") renderOrderPending(it);
+    if (it.kind === "order_admin_confirm") renderAdminConfirmCard(it);
+  });
+
+  if (scrollBottom) window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+}
+
+// ---------- Message Renderers ----------
+function renderText(it){
+  const row = document.createElement("div");
+  row.className = `message-row sent`;
+  row.innerHTML = `
+    <div>
+      <div class="bubble">${escapeHtml(it.text)}</div>
+      <div class="time">${it.time}</div>
+    </div>
+  `;
+  chatBox.appendChild(row);
+}
+function renderImg(it){
+  const row = document.createElement("div");
+  row.className = `message-row sent`;
+  row.innerHTML = `
+    <div>
+      <div class="bubble" style="padding:10px; max-width: 420px;">
+        <img src="${it.dataUrl}" style="width:100%; border-radius:14px; display:block;" />
+      </div>
+      <div class="time">${it.time}</div>
+    </div>
+  `;
+  chatBox.appendChild(row);
+}
+
+// ---------- Order Cards (User-side UI only) ----------
+function renderOrderPending(it){
+  const wrap = document.createElement("div");
+  wrap.className = "message-row sent";
+  wrap.innerHTML = `
+    <div class="order-card">
+      <div class="order-head">
+        <div class="status-chip">${it.status}</div>
+        <div class="order-title">${it.label}</div>
+        <div style="width:70px"></div>
+      </div>
+      <div class="order-body">
+        <div class="kv"><div class="k">UID</div><div class="v">${escapeHtml(it.uid)}</div></div>
+        <div class="kv"><div class="k">User</div><div class="v">${escapeHtml(it.uname)}</div></div>
+        <div class="kv"><div class="k">Type</div><div class="v">${escapeHtml(it.transfer)}</div></div>
+        <div class="kv"><div class="k">Amount</div><div class="v">${escapeHtml(it.amount)}</div></div>
+        <div class="mini">Refresh / ပြန်ဝင်လာလည်း 1 နာရီမပြည့်သရွေ့မပျက်ပါ</div>
+      </div>
+    </div>
+  `;
+  chatBox.appendChild(wrap);
+}
+
+// Admin confirm card (arrives via realtime later; here we support rendering + slip upload UX)
+function renderAdminConfirmCard(it){
+  const wrap = document.createElement("div");
+  wrap.className = "message-row received";
+  wrap.innerHTML = `
+    <img class="avatar" src="assets/media/support_icons/support.svg" alt="Admin" style="display:none;">
+    <div class="order-card wide">
+      <div class="order-head">
+        <div class="status-chip ok">confirmed</div>
+        <div class="order-title">${it.label}</div>
+        <div class="badge" id="m_${it.id}">${it.mLeft}m</div>
+      </div>
+      <div class="order-body">
+        <div class="kv"><div class="k">Address</div><div class="v" style="max-width:320px; text-align:right; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${escapeHtml(it.address)}</div></div>
+        <div class="kv"><div class="k">Amount</div><div class="v">${escapeHtml(it.amount)}</div></div>
+        <div class="mini">အချိန်ကျော်ပါက order အသစ်တင်ရန်</div>
+
+        <div class="upload-box">
+          <div>
+            <div class="upload-title">deposit ပြေစာထည့်ရန်</div>
+            <div class="mini" style="margin:6px 0 0;">Upload slip image</div>
+          </div>
+          <div class="upload-thumb" id="thumb_${it.id}">
+            <img id="thumbimg_${it.id}" />
+          </div>
+          <button class="upload-plus" type="button" data-upload="${it.id}">＋</button>
+        </div>
+
+        <div style="margin-top:12px;">
+          <button class="btn-primary" type="button" data-confirm="${it.id}" disabled>Deposit Confirm</button>
+        </div>
+      </div>
+    </div>
+  `;
+  chatBox.appendChild(wrap);
+
+  // attach handlers (slip upload)
+  wrap.querySelector(`[data-upload="${it.id}"]`).addEventListener("click", ()=>{
+    // open picker for slip upload
+    openImagePicker("slip", it.id);
+  });
+
+  // confirm disabled until slip chosen
+  const confirmBtn = wrap.querySelector(`[data-confirm="${it.id}"]`);
+  confirmBtn.addEventListener("click", ()=>{
+    if (confirmBtn.disabled) return;
+    // Here: send slip confirmation to realtime (later). For now just show a sent text.
+    addItem({
+      id: "msg_" + crypto.randomUUID(),
+      kind: "text",
+      ts: nowMs(),
+      text: "Deposit Confirm sent (slip uploaded).",
+      time: new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})
+    });
+  });
+
+  // start minute countdown
+  startMinuteCountdown(it.id, it.tsConfirm);
+}
+
+// ---------- Minute-only countdown ----------
+const countdownTimers = new Map();
+function startMinuteCountdown(cardId, tsConfirm){
+  if (countdownTimers.has(cardId)) return;
+  const tick = ()=>{
+    const elapsed = nowMs() - tsConfirm;
+    const left = Math.max(0, 60 - Math.floor(elapsed / (60*1000)));
+    const el = document.getElementById("m_" + cardId);
+    if (el) el.textContent = left + "m";
+    if (left <= 0) {
+      clearInterval(countdownTimers.get(cardId));
+      countdownTimers.delete(cardId);
+    }
+  };
+  tick();
+  const h = setInterval(tick, 60*1000);
+  countdownTimers.set(cardId, h);
+}
+
+// ---------- Send text message ----------
+$("btnSend").addEventListener("click", sendText);
+$("user-msg-input").addEventListener("keydown", (e)=>{
+  if (e.key === "Enter") sendText();
+});
+
+function sendText(){
+  const input = $("user-msg-input");
+  const text = input.value.trim();
+  if (!text) return;
+  addItem({
+    id: "msg_" + crypto.randomUUID(),
+    kind: "text",
+    ts: nowMs(),
+    text,
+    time: new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})
+  });
+  input.value = "";
+}
+
+// ---------- Image picker (chat images + slip upload) ----------
+let pendingPick = null; // {mode:"chat"|"slip", refId?}
+const filePicker = $("filePicker");
+
+$("btnAttach").addEventListener("click", ()=> openImagePicker("chat"));
+
+function openImagePicker(mode, refId=null){
+  pendingPick = { mode, refId };
+  filePicker.value = "";
+  filePicker.click();
+}
+
+filePicker.addEventListener("change", ()=>{
+  const f = filePicker.files && filePicker.files[0];
+  if (!f) return;
+  const reader = new FileReader();
+  reader.onload = ()=>{
+    showPreview(reader.result, pendingPick);
+  };
+  reader.readAsDataURL(f);
+});
+
+function showPreview(dataUrl, ctx){
+  $("previewImg").src = dataUrl;
+  $("imgPreview").classList.add("show");
+  $("previewHint").textContent = ctx.mode === "chat" ? "Send image?" : "Use this slip?";
+  // keep ctx
+  $("imgPreview").dataset.ctx = JSON.stringify(ctx);
+  $("imgPreview").dataset.dataUrl = dataUrl;
+}
+
+$("previewCancel").addEventListener("click", ()=>{
+  $("imgPreview").dataset.ctx = "";
+  $("imgPreview").dataset.dataUrl = "";
+  $("imgPreview").src = "";
+  $("imgPreview").classList.remove("show");
+});
+
+$("previewOk").addEventListener("click", ()=>{
+  const ctx = JSON.parse($("imgPreview").dataset.ctx || "{}");
+  const dataUrl = $("imgPreview").dataset.dataUrl;
+  $("imgPreview").dataset.ctx = "";
+  $("imgPreview").dataset.dataUrl = "";
+  $("imgPreview").src = "";
+  $("imgPreview").classList.remove("show");
+
+  if (!dataUrl) return;
+
+  if (ctx.mode === "chat") {
+    addItem({
+      id: "img_" + crypto.randomUUID(),
+      kind: "img",
+      ts: nowMs(),
+      dataUrl,
+      time: new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})
+    });
+    return;
+  }
+
+  // slip upload into admin confirm card
+  if (ctx.mode === "slip" && ctx.refId) {
+    const img = document.getElementById("thumbimg_" + ctx.refId);
+    const thumb = document.getElementById("thumb_" + ctx.refId);
+    if (img && thumb) {
+      img.src = dataUrl;
+      img.style.display = "block";
+      // enable confirm button
+      const card = document.querySelector(`[data-confirm="${ctx.refId}"]`);
+      if (card) card.disabled = false;
+    }
+  }
+});
+
+// ---------- Deposit Form Validation + Submit ----------
+function validateDeposit(){
+  const amount = Number($("depAmount").value || 0);
+  const ok = selectedDeposit.name && amount > 0;
+  $("btnSubmitDeposit").disabled = !ok;
+}
+$("depAmount").addEventListener("input", validateDeposit);
+
+$("btnSubmitDeposit").addEventListener("click", ()=>{
+  const p = getProfile();
+  const amount = Number($("depAmount").value || 0);
+  if (!selectedDeposit.name || !(amount > 0)) return;
+
+  const orderId = "ord_" + crypto.randomUUID();
+  addItem({
+    id: orderId,
+    kind: "order_pending",
+    ts: nowMs(),
+    label: "Deposit",
+    status: "pending",
+    uid: p.uid,
+    uname: p.uname,
+    transfer: selectedDeposit.name,
+    amount: `${amount} ${selectedDeposit.currency || ""}`.trim()
+  });
+
+  // reset & close
+  $("depAmount").value = "";
+  selectedDeposit = { name:"", currency:"" };
+  $("depTransferName").textContent = "Select method";
+  $("depCurrencyBadge").textContent = "—";
+  $("depAmountSuffix").textContent = "—";
+  $("btnSubmitDeposit").disabled = true;
+  hideModal("depositModal");
+
+  // NOTE: Admin confirm card will arrive via realtime later.
+  // For UI testing now, you can simulate by calling:
+  // window.mockAdminConfirm(orderId)
+});
+
+// ---------- Withdrawal Validation + Submit ----------
+function validateWithdraw(){
+  const amount = Number($("wdAmount").value || 0);
+  const ok = selectedWithdraw.name && amount > 0 && $("wdAddrNo").value.trim() && $("wdAddrName").value.trim();
+  $("btnSubmitWithdraw").disabled = !ok;
+}
+["wdAmount","wdAddrNo","wdAddrName"].forEach(id=>{
+  $(id).addEventListener("input", validateWithdraw);
+});
+
+$("btnSubmitWithdraw").addEventListener("click", ()=>{
+  const p = getProfile();
+  const amount = Number($("wdAmount").value || 0);
+  if (!selectedWithdraw.name || !(amount > 0)) return;
+
+  const orderId = "w_" + crypto.randomUUID();
+  addItem({
+    id: orderId,
+    kind: "order_pending",
+    ts: nowMs(),
+    label: "Withdrawal",
+    status: "pending",
+    uid: p.uid,
+    uname: p.uname,
+    transfer: selectedWithdraw.name,
+    amount: `${amount} ${selectedWithdraw.currency || ""}`.trim()
+  });
+
+  // reset & close
+  $("wdAmount").value = "";
+  $("wdAddrNo").value = "";
+  $("wdAddrName").value = "";
+  selectedWithdraw = { name:"", currency:"" };
+  $("wdTransferName").textContent = "Select method";
+  $("wdCurrencyBadge").textContent = "—";
+  $("wdAmountSuffix").textContent = "—";
+  $("btnSubmitWithdraw").disabled = true;
+  hideModal("withdrawModal");
+});
+
+// ---------- Mock helpers (for UI testing only) ----------
+window.mockAdminConfirm = function(orderId){
+  // mark pending order as success (blue mark) WITHOUT replacing
+  const idx = items.findIndex(x => x.id === orderId);
+  if (idx >= 0 && items[idx].kind === "order_pending") {
+    items[idx].status = "success order";
+    saveItems(items);
+  }
+  // add admin confirm card
+  addItem({
+    id: "ac_" + crypto.randomUUID(),
+    kind: "order_admin_confirm",
+    ts: nowMs(),
+    tsConfirm: nowMs(),
+    label: "Deposit",
+    address: "TRX-EXAMPLE-ADDRESS-1234567890",
+    amount: (idx>=0 ? items[idx].amount : "—"),
+    mLeft: 60
+  });
+};
+
+// ---------- Init ----------
+paintProfile();
+renderAll();
+scheduleCleanup();
+</script>
+
+<script>
     // Login မဝင်ထားရင် Login စာမျက်နှာကို ပြန်ပို့မယ်
     checkAccess();
 </script>
+
+
 </body>
 </html>
