@@ -434,43 +434,25 @@
 <!-- Main Wrapper Start -->
     <div>
 
-       <!-- HEADER MENU START -->
-        <header class="header">
-            <div class="container-fluid">
-                <nav class="navigation d-flex align-items-center justify-content-between">
-                    <a href="index.html" class="d-flex align-items-center">
-                        <img src="assets/media/logomain.svg" alt="/logo" class="header-logo">
-                    </a>
-                    <div class="menu-button-right">
-                        <div class="main-menu__nav">
-                            <ul class="main-menu__list">
-                                <li>
-                                    <a href="index.html">Home</a>
-                                </li>
-                                <li>
-                                    <a href="about.html">Assets</a>
-                                </li>
-                                <li>
-                                    <a href="market.html">Trade</a>
-                                </li>
-                            
-                                 <li>
-                                <a href="contact.html">Finance</a>
-                              </li>
-                                  <li>
-                                    <a href="profile.html">Profile</a>
-                                </li>
-                          
-                    <div class="main-menu__right">
-                    
-                        <a href="#" class="d-xl-none d-flex main-menu__toggler mobile-nav__toggler">
-                            <img src="assets/media/icons/menu-2.png" alt="">
-                        </a>
-                    </div>
-                </nav>
-            </div>
-        </header>
-        <!-- HEADER MENU END -->
+
+<header class="header">
+  <div class="container-fluid">
+    <nav class="navigation d-flex align-items-center justify-content-between">
+
+      <!-- BACK (Left) -->
+      <a href="#" class="hdr-back d-flex align-items-center"
+         onclick="history.back(); return false;" aria-label="Back">
+        <img src="assets/media/support_icons/back.svg" alt="Back" class="hdr-back-icon">
+      </a>
+
+      <!-- LOGO (Right) - မင်းအဟောင်းအတိုင်း -->
+      <a href="index.html" class="d-flex align-items-center">
+        <img src="assets/media/logomain.svg" alt="/logo" class="header-logo">
+      </a>
+
+    </nav>
+  </div>
+</header>
 
        <style>
     /* Background Setup */
@@ -1176,7 +1158,7 @@ html, body {
 
 
 /* icon premium micro-interactions (optional) */
-.icon-svg, .send-icon{
+.icon-svg,.send-icon{
   opacity: 0.85;
   transition: transform .15s ease, opacity .15s ease;
 }
@@ -1185,31 +1167,53 @@ html, body {
   transform: scale(1.05);
 }
 
-/* ===== HEADER RIGHT BACK BUTTON ===== */
-.header, .header-bar, header{
-  position: relative; /* အရေးကြီး */
-  z-index: 2500;      /* input bar ထက်နည်းနည်းအောက်ပေမဲ့ content ထက်အပေါ် */
+/* ===== HEADER FIX (height + no long border box) ===== */
+.header{
+  height: 64px;                 /* header အမြင့်ကိုချုပ် */
+  padding: 0 !important;        /* app.css ရဲ့ 15px 0 ကို override */
+  display: flex;
+  align-items: center;
 }
 
-.hdr-left-btn{
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
+/* nav က header အမြင့်အတိုင်းပဲနေအောင် */
+.header .navigation{
+  width: 100%;
+  height: 64px;
+  align-items: center !important;
+}
+
+/* container-fluid က padding အလွန်ကြီးမနေအောင် */
+.header .container-fluid{
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+/* ===== BACK BUTTON FIX ===== */
+.hdr-back{
   width: 40px;
   height: 40px;
   border-radius: 14px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.10);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.10);
+  flex: 0 0 40px;              /* stretch မဖြစ်အောင် */
+  padding: 0 !important;       /* link padding ကြောင့်ရှည်မသွားအောင် */
+  line-height: 0;
 }
 
-.hdr-left-btn img{
+.hdr-back-icon{
   width: 22px;
   height: 22px;
-  display:none;
+  display: block;
+}
+
+/* ===== Mobile tweak ===== */
+@media (max-width: 520px){
+  .header{ height: 60px; }
+  .header .navigation{ height: 60px; }
+  .hdr-back{ width: 38px; height: 38px; flex-basis: 38px; }
 }
 
 
@@ -1751,33 +1755,6 @@ html, body {
     </a>
 
 </div>
- <!-- Mobile Menu Start -->
-    <div class="mobile-nav__wrapper">
-        <div class="mobile-nav__overlay mobile-nav__toggler"></div>
-        <div class="mobile-nav__content">
-            <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
-            <div class="logo-box">
-                <a href="index.html" aria-label="logo image"><img src="assets/media/logomain.svg" alt=""></a>
-            </div>
-            <div class="mobile-nav__container"></div>
-            <ul class="mobile-nav__contact list-unstyled">
-                <li>
-                    <i class="fas fa-envelope"></i>
-                    <a href="mailto:example@company.com">sgxglobal@company.com</a>
-                </li>
-                <li>
-                    <i class="fa fa-phone-alt"></i>
-                    <a href="tel:+12345678">+123 (4567) -890</a>
-                </li>
-            </ul>
-            <div class="mobile-nav__social">
-                <a href=""><i class="fa-brands fa-x-twitter"></i></a>
-                <a href=""><i class="fab fa-facebook"></i></a>
-                <a href=""><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-    </div>
-    <!-- Mobile Menu End -->
     
  <script src="assets/js/vendor/jquery-3.6.3.min.js"></script> <script src="assets/js/vendor/bootstrap.min.js"></script>
     <script src="assets/js/vendor/jquery-validator.js"></script>

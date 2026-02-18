@@ -51,8 +51,16 @@
     </style>
 
 </head>
-<body style="background-color: #050b1a;">
-
+<body >
+ <header class="header">
+    <div class="container-fluid">
+        <nav class="navigation d-flex align-items-center justify-content-between">
+            <a href="index.html" class="d-flex align-items-center">
+                <img src="assets/media/logomain.svg" alt="/logo" class="header-logo">
+            </a>
+        </nav>
+    </div>
+</header>
     <section style="
         padding-top: 80px; 
         padding-bottom: 90px; 
@@ -157,17 +165,16 @@
         <span style="font-size: 10px; font-weight: 600;">Finance</span>
     </a>
 
+   
     <a href="profile.html" class="nav-item active" id="link-profile">
         <img src="assets/media/nav-icons/profile.svg" alt="Profile" class="nav-icon" id="icon-profile">
         <span style="font-size: 10px; font-weight: 600;">Profile</span>
     </a>
 
-</div>
-
-
 <script src="assets/js/vendor/jquery-3.6.3.min.js"></script>
     <script src="assets/js/vendor/bootstrap.min.js"></script>
-
+ <script src="assets/js/app.js"></script>
+ 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="assets/js/core.js"></script>
     <script src="assets/js/auth.js"></script>

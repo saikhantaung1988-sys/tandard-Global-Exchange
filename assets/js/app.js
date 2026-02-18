@@ -533,8 +533,8 @@ document.addEventListener("DOMContentLoaded", function() {
     } else if (page === "market.html") {
         currentIcon = "trade";
     } else if (page === "contact.html") {
-        currentIcon = "service";
-    } else if (path.includes("profile.html")) {
+        currentIcon = "finance";
+   } else if (page === "profile.html") {
         currentIcon = "profile";
     }
 
