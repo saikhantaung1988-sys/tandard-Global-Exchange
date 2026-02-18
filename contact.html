@@ -1704,19 +1704,13 @@ html, body {
     <script src="assets/js/vendor/jquery-validator.js"></script>
     <script src="assets/js/app.js"></script>
 
-    <script>
-        $(window).on('load', function() {
-            // Input Bar ကို ဖြည်းဖြည်းချင်း ပေါ်လာစေမည့် Animation
-            setTimeout(function() {
-                $('.chat-input-area').fadeIn(1500); 
-            }, 3800);
-            
-            // စာမျက်နှာကို အောက်ဆုံးသို့ Scroll ဆွဲချခြင်း
-            window.scrollTo(0, document.body.scrollHeight);
-        });
-    </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="assets/js/core.js"></script>
+
+<script>
+    // Login မဝင်ထားရင် Login စာမျက်နှာကို ပြန်ပို့မယ်
+    checkAccess();
+</script>
 
 <script>
 /* ====== USER APP (content.html) UI LOGIC ONLY ====== */
@@ -2224,10 +2218,6 @@ renderAll();
 scheduleCleanup();
 </script>
 
-<script>
-    // Login မဝင်ထားရင် Login စာမျက်နှာကို ပြန်ပို့မယ်
-    checkAccess();
-</script>
 
 
 </body>
