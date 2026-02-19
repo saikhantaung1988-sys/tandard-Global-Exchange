@@ -1755,7 +1755,7 @@ label.error {
   display: grid;
   align-items: center;
   justify-content: center;
-  z-index: 9999999;
+  z-index: 1000000;
   background: #141516;
 }
 #preloader .loader {
@@ -4172,8 +4172,7 @@ footer .newsletter-container form button {
    
 
     /* Glass Effect (ဖန်သားပြင် ဒီဇိုင်း) */
-
-    background: rgba(12, 12, 13, 0.7) !important; /* အမဲရောင် ဖောက်ထွင်း */
+    background: rgba(25, 26, 31, 0.7) !important; /* အမဲရောင် ဖောက်ထွင်း */
 
     backdrop-filter: blur(20px) !important;       /* နောက်ခံကို ဝါးလိုက်တာ */
 
@@ -4236,14 +4235,14 @@ footer .newsletter-container form button {
 /* HERO SECTION */
 .binance-hero {
     background-color:rgb(25,26,31);
-    padding: 60px 20px 40px 20px;
+    padding: 70px 20px 40px 20px;
     text-align: center;
     border-bottom: 1px solid #2b3139;
 }
 
 /* BIG NUMBERS */
 .trust-number {
-    color: #F0B90B;
+    color :#D9D9D9;
     font-family: 'Rajdhani', sans-serif;
     font-weight: 700;
     font-size: 42px; /* Mobile မှာ အဆင်ပြေမယ့် size */
@@ -4252,41 +4251,45 @@ footer .newsletter-container form button {
 }
 
 .trust-label {
-    color: #fff;
+    color:#D9D9D9;
     font-weight: 800;
-    font-size: 28px;
+    font-size: 20px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     margin-bottom: 10px;
 }
 
 /* BUTTONS */
-.btn-login-gold {
-    background-color: #F0B90B;
-    color:var(--binance-gray);
+.btn-login-gold { background:  #141519; 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 175px;
+    border-radius: 13px;
     font-weight: 700;
-    width: 200px;
-    padding: 14px;
-    border-radius: 8px;
-    border: none;
-   margin: 0 auto 15px auto; /* Login နဲ့ Sign Up ကြား ဟမယ် */
-    font-size: 16px;
+   padding: 20px;
+    margin: 0 auto;
+    font-size: 14px;
     display: block;
     text-decoration: none;
+    margin: 0 auto 5px auto; 
 }
+   
+
+
 
 .btn-signup-dark {
-    background-color: #F0B90B;
-    color: var(--binance-gray);
+    background:  #141519; 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 175px;
+    font-family: 'Rajdhani', sans-serif;
     font-weight: 700;
-    width: 200px;
-    padding: 14px;
-    border-radius: 8px;
-    border: none;
+    border-radius: 13px;
+   padding: 20px;
     margin: 0 auto;
-    font-size: 16px;
+    font-size: 14px;
     display: block;
     text-decoration: none;
 }
+          
 
 /* BINANCE WIDGET CARD WRAPPER */
 .binance-card-wrapper {

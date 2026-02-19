@@ -57,7 +57,7 @@ var MyScroll = "";
     preloader: function () {
       setTimeout(function () {
         $("#preloader").fadeOut("slow");
-      }, 3800);
+      }, 700);
     },
     header: function () {
       function dynamicCurrentMenuClass(selector) {
@@ -516,7 +516,8 @@ var MyScroll = "";
     },
   };
   Init.i();
-})(window, document, jQuery);
+})
+(window, document, jQuery);
 
 document.addEventListener("DOMContentLoaded", function() {
     // ၁။ လက်ရှိရောက်နေတဲ့ Page နာမည်ကို ယူမယ်
