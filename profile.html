@@ -471,87 +471,148 @@
         </nav>
     </div>
 </header>
-    <section style="
-        padding-top: 80px; 
-        padding-bottom: 90px; 
-        min-height: 100vh; 
-        background: url('assets/media/assetss.jpg') no-repeat center center; 
-        background-size: cover; 
-        background-attachment: fixed;
-        position: relative;">
+   <section style="
+  padding-top: 70px;
+  padding-bottom: 90px;
+  min-height: 100vh;
+  background: url('assets/media/assetss.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;">
 
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 11, 26, 0.85); pointer-events: none;"></div>
+  <div style="position:absolute; inset:0; background: rgba(5, 11, 26, 0.85); pointer-events:none;"></div>
 
-        <div class="container" style="position: relative; z-index: 2;">
-            
-            <div class="row justify-content-center">
-                <div class="col-lg-5 col-md-7 col-sm-12">
+  <div class="container" style="position: relative; z-index: 2;">
+    <div class="row justify-content-center">
+      <div class="col-lg-5 col-md-7 col-sm-12">
 
-                    <div class="premium-glass-card" style="padding: 30px; margin-bottom: 25px; text-align: center;">
-                        
-                        <div style="position: relative; display: inline-block; margin-bottom: 15px;">
-                            <div class="profile-avatar-glow" style="
-                                width: 85px; height: 85px; 
-                                background: linear-gradient(135deg, #FCD535 0%, #F7931A 100%); 
-                                border-radius: 50%; 
-                                display: flex; align-items: center; justify-content: center; 
-                                font-size: 35px; color: #000;
-                                border: 3px solid rgba(255,255,255,0.1);">
-                                <i class="fa-solid fa-user"></i>
-                            </div>
-                            <div style="position: absolute; bottom: 2px; right: 2px; background: #0ecb81; width: 22px; height: 22px; border-radius: 50%; border: 3px solid #1a1d24; display: flex; align-items: center; justify-content: center;">
-                                <i class="fa-solid fa-check" style="color: #fff; font-size: 10px;"></i>
-                            </div>
-                        </div>
+        <!-- TOP PROFILE CARD (keep IDs for logic) -->
+        <div class="premium-glass-card" style="padding: 26px; margin-bottom: 14px; text-align: center;">
 
-                        <h4 id="profile-name" style="color: #fff; font-weight: 700; margin-bottom: 8px; font-family: 'Outfit', sans-serif;">Loading...</h4>
-                        
-                        <div style="display: inline-flex; align-items: center; background: rgba(255,255,255,0.05); padding: 6px 15px; border-radius: 20px;">
-                            <span style="color: #8b92a1; font-size: 12px; margin-right: 6px; text-transform: uppercase;">UID:</span>
-                            <span id="profile-uid" style="color: #FCD535; font-family: monospace; font-size: 14px; letter-spacing: 1px;">...</span>
-                        </div>
-                    </div>
-
-                    <a href="contact.html" style="text-decoration: none;">
-                        <div class="premium-glass-card btn-glass-action" style="padding: 18px 25px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
-                            <div style="display: flex; align-items: center; gap: 15px;">
-                                <i class="fa-solid fa-headset" style="color: #FCD535; font-size: 18px;"></i>
-                                <span style="color: #fff; font-weight: 500; font-size: 15px;">Help & Support</span>
-                            </div>
-                            <i class="fa-solid fa-chevron-right" style="color: #5d6375; font-size: 12px;"></i>
-                        </div>
-                    </a>
-
-                    <a href="#" style="text-decoration: none;">
-                        <div class="premium-glass-card btn-glass-action" style="padding: 18px 25px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
-                            <div style="display: flex; align-items: center; gap: 15px;">
-                                <i class="fa-solid fa-shield-halved" style="color: #FCD535; font-size: 18px;"></i>
-                                <span style="color: #fff; font-weight: 500; font-size: 15px;">Security</span>
-                            </div>
-                            <i class="fa-solid fa-chevron-right" style="color: #5d6375; font-size: 12px;"></i>
-                        </div>
-                    </a>
-
-                    <a href="#" style="text-decoration: none;">
-                        <div class="premium-glass-card btn-glass-action" style="padding: 18px 25px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
-                            <div style="display: flex; align-items: center; gap: 15px;">
-                                <i class="fa-solid fa-gear" style="color: #FCD535; font-size: 18px;"></i>
-                                <span style="color: #fff; font-weight: 500; font-size: 15px;">Settings</span>
-                            </div>
-                            <i class="fa-solid fa-chevron-right" style="color: #5d6375; font-size: 12px;"></i>
-                        </div>
-                    </a>
-
-                    <button onclick="handleLogout()" class="premium-glass-card btn-glass-action" style="width: 100%; padding: 18px 25px; margin-top: 25px; display: flex; justify-content: center; align-items: center; cursor: pointer; border: 1px solid rgba(246, 70, 93, 0.3);">
-                        <span style="color: #f6465d; font-weight: 600; font-size: 15px;">
-                            <i class="fa-solid fa-right-from-bracket me-2"></i> Log Out
-                        </span>
-                    </button>
-
-                </div>
+          <!-- Avatar (border style, uses svg icon from profile folder) -->
+          <div style="display:flex; justify-content:center; margin-bottom: 12px;">
+            <div style="
+              width: 92px; height: 92px;
+              border-radius: 50%;
+              border: 2px solid rgba(255,255,255,0.14);
+              background: rgba(255,255,255,0.05);
+              display:flex; align-items:center; justify-content:center;">
+              <img src="assets/media/profile/user.svg" alt="User"
+                   style="width:42px; height:42px; opacity:0.92;">
             </div>
+          </div>
+
+          <!-- Username (logic ID kept) -->
+          <h4 id="profile-name" style="color:#fff; font-weight: 800; margin: 0 0 10px; font-family:'Outfit', sans-serif;">
+            Loading...
+          </h4>
+
+          <!-- UID (logic ID kept) -->
+          <div style="margin-bottom: 10px;">
+            <div style="color: rgba(255,255,255,0.55); font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">
+              UID
+            </div>
+            <div id="profile-uid" style="color:#fff; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 16px; font-weight: 700; letter-spacing: .6px;">
+              ...
+            </div>
+          </div>
+
+          <!-- Basic Account -->
+          <div style="color: rgba(255,255,255,0.55); font-size: 13px; font-weight: 700;">
+            Basic Account
+          </div>
         </div>
-    </section>
+
+        <!-- MENU LIST (one glass card, rows inside, no row borders) -->
+        <div class="premium-glass-card" style="padding: 10px; margin-bottom: 14px;">
+
+          <!-- Helper row template -->
+          <a href="contact.html" style="text-decoration:none;">
+            <div class="btn-glass-action" style="padding: 14px 14px; border-radius: 14px; display:flex; align-items:center; justify-content:space-between;">
+              <div style="display:flex; align-items:center; gap:12px;">
+                <img src="assets/media/profile/support.svg" alt="" style="width:22px; height:22px; opacity:0.9;">
+                <span style="color:#fff; font-weight: 650; font-size: 15px;">Help &amp; Support</span>
+              </div>
+              <img src="assets/media/profile/chevron-right.svg" alt="" style="width:16px; height:16px; opacity:0.55;">
+            </div>
+          </a>
+
+          <a href="#" style="text-decoration:none;">
+            <div class="btn-glass-action" style="padding: 14px 14px; border-radius: 14px; display:flex; align-items:center; justify-content:space-between;">
+              <div style="display:flex; align-items:center; gap:12px;">
+                <img src="assets/media/profile/phone.svg" alt="" style="width:22px; height:22px; opacity:0.9;">
+                <span style="color:#fff; font-weight: 650; font-size: 15px;">Phone</span>
+              </div>
+              <img src="assets/media/profile/chevron-right.svg" alt="" style="width:16px; height:16px; opacity:0.55;">
+            </div>
+          </a>
+
+          <a href="#" style="text-decoration:none;">
+            <div class="btn-glass-action" style="padding: 14px 14px; border-radius: 14px; display:flex; align-items:center; justify-content:space-between;">
+              <div style="display:flex; align-items:center; gap:12px;">
+                <img src="assets/media/profile/email.svg" alt="" style="width:22px; height:22px; opacity:0.9;">
+                <span style="color:#fff; font-weight: 650; font-size: 15px;">Email</span>
+              </div>
+            
+            </div>
+          </a>
+
+          <a href="#" style="text-decoration:none;">
+            <div class="btn-glass-action" style="padding: 14px 14px; border-radius: 14px; display:flex; align-items:center; justify-content:space-between;">
+              <div style="display:flex; align-items:center; gap:12px;">
+                <img src="assets/media/profile/language.svg" alt="" style="width:22px; height:22px; opacity:0.9;">
+                <span style="color:#fff; font-weight: 650; font-size: 15px;">Language</span>
+              </div>
+              <img src="assets/media/profile/chevron-right.svg" alt="" style="width:16px; height:16px; opacity:0.55;">
+            </div>
+          </a>
+
+          <a href="#" style="text-decoration:none;">
+            <div class="btn-glass-action" style="padding: 14px 14px; border-radius: 14px; display:flex; align-items:center; justify-content:space-between;">
+              <div style="display:flex; align-items:center; gap:12px;">
+                <img src="assets/media/profile/vip.svg" alt="" style="width:22px; height:22px; opacity:0.9;">
+                <span style="color:#fff; font-weight: 650; font-size: 15px;">VIP</span>
+              </div>
+              <img src="assets/media/profile/chevron-right.svg" alt="" style="width:16px; height:16px; opacity:0.55;">
+            </div>
+          </a>
+
+          <a href="#" style="text-decoration:none;">
+            <div class="btn-glass-action" style="padding: 14px 14px; border-radius: 14px; display:flex; align-items:center; justify-content:space-between;">
+              <div style="display:flex; align-items:center; gap:12px;">
+                <img src="assets/media/profile/info.svg" alt="" style="width:22px; height:22px; opacity:0.9;">
+                <span style="color:#fff; font-weight: 650; font-size: 15px;">About Us</span>
+              </div>
+              <img src="assets/media/profile/chevron-right.svg" alt="" style="width:16px; height:16px; opacity:0.55;">
+            </div>
+          </a>
+
+          <a href="#" style="text-decoration:none;">
+            <div class="btn-glass-action" style="padding: 14px 14px; border-radius: 14px; display:flex; align-items:center; justify-content:space-between;">
+              <div style="display:flex; align-items:center; gap:12px;">
+                <img src="assets/media/profile/lock.svg" alt="" style="width:22px; height:22px; opacity:0.9;">
+                <span style="color:#fff; font-weight: 650; font-size: 15px;">Change Password</span>
+              </div>
+              <img src="assets/media/profile/chevron-right.svg" alt="" style="width:16px; height:16px; opacity:0.55;">
+            </div>
+          </a>
+
+        </div>
+
+        <!-- LOGOUT (keep handleLogout logic) -->
+        <button onclick="handleLogout()"
+          class="premium-glass-card btn-glass-action"
+          style="width: 100%; padding: 16px 18px; display:flex; justify-content:center; align-items:center; cursor:pointer; border: 1px solid rgba(246, 70, 93, 0.3);">
+          <span style="color:#f6465d; font-weight: 700; font-size: 15px; display:flex; align-items:center; gap:10px;">
+            <img src="assets/media/profile/logout.svg" alt="" style="width:18px; height:18px; opacity:0.9;">
+            Log Out
+          </span>
+        </button>
+
+      </div>
+    </div>
+  </div>
+</section>
 
  </div>
     <!-- Main Wrapper End -->
