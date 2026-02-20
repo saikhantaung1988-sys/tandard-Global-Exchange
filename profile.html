@@ -48,6 +48,39 @@
         .profile-avatar-glow {
             box-shadow: 0 0 25px rgba(252, 213, 53, 0.2);
         }
+        /* ===== Profile card compact (reduce big box feeling) ===== */
+.premium-glass-card {
+  border-radius: 16px; /* 20px -> 16px (ပို compact) */
+}
+
+/* ===== Make menu rows vertical (no 2-column) ===== */
+.premium-glass-card a {
+  display: block;
+  width: 100%;
+}
+
+/* ===== Row spacing + touch-friendly ===== */
+.btn-glass-action {
+  min-height: 52px;            /* thumb-friendly height */
+  border-radius: 14px;
+}
+
+/* ===== Softer hover (mobile friendly) ===== */
+@media (hover: hover) {
+  .btn-glass-action:hover {
+    transform: translateY(-1px); /* less jumpy */
+  }
+}
+
+/* ===== Avatar glow toned-down (premium subtle) ===== */
+.profile-avatar-glow {
+  box-shadow: 0 0 18px rgba(252, 213, 53, 0.18);
+}
+
+/* ===== Mobile padding tighten ===== */
+@media (max-width: 420px) {
+  .premium-glass-card { padding: 12px !important; }
+}
     </style>
 
 </head>
@@ -486,56 +519,50 @@
     <div class="row justify-content-center">
       <div class="col-lg-5 col-md-7 col-sm-12">
 
-        <!-- TOP PROFILE CARD (keep IDs for logic) -->
-        <div class="premium-glass-card" style="padding: 26px; margin-bottom: 14px; text-align: center;">
+        <div class="premium-glass-card" style="padding: 16px; margin-bottom: 14px;">
+  <div style="display:flex; align-items:center; gap:14px;">
 
-          <!-- Avatar (border style, uses svg icon from profile folder) -->
-          <div style="display:flex; justify-content:center; margin-bottom: 12px;">
-            <div style="
-              width: 92px; height: 92px;
-              border-radius: 50%;
-              border: 2px solid rgba(255,255,255,0.14);
-              background: rgba(255,255,255,0.05);
-              display:flex; align-items:center; justify-content:center;">
-              <img src="assets/media/profile/user.svg" alt="User"
-                   style="width:42px; height:42px; opacity:0.92;">
-            </div>
-          </div>
+    <!-- avatar left -->
+    <div style="
+      width:64px; height:64px; border-radius:18px;
+      border:1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.05);
+      display:flex; align-items:center; justify-content:center;
+      flex: 0 0 64px;">
+      <img src="assets/media/profile/user.svg" alt="User" style="width:30px; height:30px; opacity:0.92;">
+    </div>
 
-          <!-- Username (logic ID kept) -->
-          <h4 id="profile-name" style="color:#fff; font-weight: 800; margin: 0 0 10px; font-family:'Outfit', sans-serif;">
-            Loading...
-          </h4>
+    <!-- text right -->
+    <div style="flex:1; min-width:0;">
+      <div id="profile-name"
+           style="color:#fff; font-weight:800; font-size:16px; font-family:'Outfit', sans-serif; line-height:1.15; margin-bottom:6px;">
+        Loading...
+      </div>
 
-          <!-- UID (logic ID kept) -->
-          <div style="margin-bottom: 10px;">
-            <div style="color: rgba(255,255,255,0.55); font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">
-              UID
-            </div>
-            <div id="profile-uid" style="color:#fff; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 16px; font-weight: 700; letter-spacing: .6px;">
-              ...
-            </div>
-          </div>
+      <div style="color: rgba(255,255,255,0.62); font-size:13px; font-weight:700; line-height:1.2; margin-bottom:6px;">
+        UID - <span id="profile-uid" style="color:#fff; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-weight:800;">...</span>
+      </div>
 
-          <!-- Basic Account -->
-          <div style="color: rgba(255,255,255,0.55); font-size: 13px; font-weight: 700;">
-            Basic Account
-          </div>
-        </div>
+      <div style="color: rgba(255,255,255,0.55); font-size:13px; font-weight:700; line-height:1.2;">
+        Basic Account
+      </div>
+    </div>
 
-        <!-- MENU LIST (one glass card, rows inside, no row borders) -->
-        <div class="premium-glass-card" style="padding: 10px; margin-bottom: 14px;">
+  </div>
+</div>
 
-          <!-- Helper row template -->
-          <a href="contact.html" style="text-decoration:none;">
-            <div class="btn-glass-action" style="padding: 14px 14px; border-radius: 14px; display:flex; align-items:center; justify-content:space-between;">
-              <div style="display:flex; align-items:center; gap:12px;">
-                <img src="assets/media/profile/support.svg" alt="" style="width:22px; height:22px; opacity:0.9;">
-                <span style="color:#fff; font-weight: 650; font-size: 15px;">Help &amp; Support</span>
-              </div>
-              <img src="assets/media/profile/chevron-right.svg" alt="" style="width:16px; height:16px; opacity:0.55;">
-            </div>
-          </a>
+    
+       <div class="premium-glass-card" style="padding: 10px; margin-bottom: 14px;">
+
+  <a href="contact.html" style="text-decoration:none; display:block;">
+    <div class="btn-glass-action" style="padding: 14px 14px; border-radius: 14px; display:flex; align-items:center; justify-content:space-between;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <img src="assets/media/profile/support.svg" style="width:22px; height:22px; opacity:0.9;" alt="">
+        <span style="color:#fff; font-weight:650; font-size:15px;">Help &amp; Support</span>
+      </div>
+      <img src="assets/media/profile/chevron-right.svg" style="width:16px; height:16px; opacity:0.55;" alt="">
+    </div>
+  </a>
 
           <a href="#" style="text-decoration:none;">
             <div class="btn-glass-action" style="padding: 14px 14px; border-radius: 14px; display:flex; align-items:center; justify-content:space-between;">
