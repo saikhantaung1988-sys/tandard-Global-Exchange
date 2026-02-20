@@ -778,7 +778,7 @@
             </svg>
 
 <section style="
-    padding-top: 75px; 
+    padding-top: 70px; 
     padding-bottom: 30px; 
     min-height: 100vh; 
     background: url('assets/media/assetss.jpg') no-repeat center center; 
@@ -786,55 +786,68 @@
     background-attachment: fixed;
     position: relative;">
     
-    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 11, 26, 0.85); pointer-events: none;"></div>
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(25, 26, 31, 0.85); pointer-events: none;"></div>
 
-    <script src="https://public.bnbstatic.com/unpkg/growth-widget/cryptoCurrencyWidget@0.0.23.min.js"></script>
 
     <div class="container" style="position: relative; z-index: 2;">
         
         <div class="row justify-content-center">
     <div class="col-lg-5 col-md-7 col-sm-10">
         <div style="
-            background: linear-gradient(180deg, rgba(5, 11, 26, 0.4) 0%, rgba(5, 11, 26, 0.9) 100%); 
+            background: linear-gradient(180deg, rgba(25, 26, 31, 0.4) 0%, rgba(25, 26, 31, 0.9) 100%); 
             backdrop-filter: blur(25px); 
             -webkit-backdrop-filter: blur(25px);
             border: 1px solid rgba(255, 255, 255, 0.08); 
             border-top: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 28px; 
             padding: 25px 30px; /* Padding နည်းနည်းပိုပေးလိုက်တယ် */
-            margin-bottom: 30px; 
+            margin-bottom:5px; 
             box-shadow: 0 25px 50px rgba(0,0,0,0.5); 
             position: relative; 
             overflow: hidden;">
 
-           <div id="copy-uid-btn" style="margin-bottom: 15px; cursor: pointer; display: inline-flex; align-items: center;">
-    <span style="color: #5d6375; font-size: 11px; margin-right: 5px;">UID:</span>
-     <span id="user-uid" style="color: #5d6375; font-size: 11px; font-family: monospace; letter-spacing: 1px;">Loading...</span>
-    
-                   <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#5d6375" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 4px; vertical-align: middle;">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                </svg>
-      </div>
+        
 
-<div style="margin-bottom: 5px;">
-    <span style="color: #8b92a1; font-size: 15px; font-weight: 500; letter-spacing: 0.5px;">Total Amount</span>
-</div>
+<div style="text-align:center; width:100%;">
 
-<div style="display: flex; align-items: baseline; gap: 8px;">
-    
+  <div style="margin-bottom: 10px;">
+    <span style="color: #d9d9d9; font-size: 20px; font-weight: 500; letter-spacing: 0.5px;">Total Amount</span>
+  </div>
+
+  <div style="display: flex; align-items: baseline; justify-content: center; gap: 8px;">
     <h1 id="user-balance" style="color: #ffffff; font-size: 33px; font-weight: 700; margin: 0; letter-spacing: -0.5px; font-family: 'Outfit', sans-serif; line-height: 1; text-shadow: 0 0 20px rgba(255,255,255,0.1);">
-        $0.00
+      $0.00
     </h1>
 
-    <div style="display: flex; align-items: center; gap: 6px;">
-        <span style="color: #8b92a1; font-size: 13px; font-weight: 600;">USDT</span>
-        
-        <svg id="toggle-eye" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8b92a1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="cursor: pointer; opacity: 0.7;">
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-            <circle cx="12" cy="12" r="3"></circle>
-        </svg>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <span style="color: #8b92a1; font-size: 13px; font-weight: 600;">USDT</span>
+
+      <svg id="toggle-eye" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8b92a1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="cursor: pointer; opacity: 0.7;">
+        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+        <circle cx="12" cy="12" r="3"></circle>
+      </svg>
     </div>
+  </div>
+
+  <!-- Buttons row -->
+  <div style="margin-top: 20px; display:flex; justify-content:center; gap:10px; flex-wrap:wrap;">
+    <button type="button"
+      style="min-width:100px; height:40px; padding:0 14px; border-radius:14px; border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.06); color:#fff; font-weight:600; cursor:pointer;">
+      Add Fund
+    </button>
+
+ <button type="button"
+      style="min-width:100px; height:40px; padding:0 14px; border-radius:14px; border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.06); color:#fff; font-weight:600; cursor:pointer;">
+      Send
+    </button>
+    
+    <button type="button"
+      style="min-width:100px; height:40px; padding:0 14px; border-radius:14px; border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.06); color:#fff; font-weight:600; cursor:pointer;">
+      Transfer
+    </button>
+
+   
+  </div>
 
 </div>
                 
@@ -842,45 +855,7 @@
             </div>
         </div>
 
-        <div class="row justify-content-center">
-            <div class="col-lg-5 col-md-7 col-sm-10">
-                <h6 style="color: #5d6375; margin-bottom: 15px; padding-left: 5px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Live Assets</h6>
-
-                <div style="margin-bottom: 12px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); background: rgba(5, 11, 26, 0.6); box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
-                    <div class="binance-widget-marquee" data-cmc-ids="1" data-theme="dark" data-transparent="true" data-locale="en" data-fiat="USD" data-layout="banner" data-powered-by="Powered by" data-disclaimer="Disclaimer"></div>
-                </div>
-
-                <div style="margin-bottom: 12px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); background: rgba(5, 11, 26, 0.6); box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
-                    <div class="binance-widget-marquee" data-cmc-ids="1027" data-theme="dark" data-transparent="true" data-locale="en" data-fiat="USD" data-layout="banner" data-powered-by="Powered by" data-disclaimer="Disclaimer"></div>
-                </div>
-
-                <div style="margin-bottom: 12px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); background: rgba(5, 11, 26, 0.6); box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
-                    <div class="binance-widget-marquee" data-cmc-ids="825" data-theme="dark" data-transparent="true" data-locale="en" data-fiat="USD" data-layout="banner" data-powered-by="Powered by" data-disclaimer="Disclaimer"></div>
-                </div>
-
-                <div style="margin-bottom: 12px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); background: rgba(5, 11, 26, 0.6); box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
-                    <div class="binance-widget-marquee" data-cmc-ids="52" data-theme="dark" data-transparent="true" data-locale="en" data-fiat="USD" data-layout="banner" data-powered-by="Powered by" data-disclaimer="Disclaimer"></div>
-                </div>
-
-                <div style="margin-bottom: 12px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); background: rgba(5, 11, 26, 0.6); box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
-                    <div class="binance-widget-marquee" data-cmc-ids="5426" data-theme="dark" data-transparent="true" data-locale="en" data-fiat="USD" data-layout="banner" data-powered-by="Powered by" data-disclaimer="Disclaimer"></div>
-                </div>
-
-                <div style="margin-bottom: 12px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); background: rgba(5, 11, 26, 0.6); box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
-                    <div class="binance-widget-marquee" data-cmc-ids="3408" data-theme="dark" data-transparent="true" data-locale="en" data-fiat="USD" data-layout="banner" data-powered-by="Powered by" data-disclaimer="Disclaimer"></div>
-                </div>
-
-                <div style="margin-bottom: 12px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); background: rgba(5, 11, 26, 0.6); box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
-                    <div class="binance-widget-marquee" data-cmc-ids="4705" data-theme="dark" data-transparent="true" data-locale="en" data-fiat="USD" data-layout="banner" data-powered-by="Powered by" data-disclaimer="Disclaimer"></div>
-                </div>
-
-            </div>
-           </div>
-    </div> 
-    </section>
-
-
-            <!-- BUY/SELL CARD START -->
+        <!-- BUY/SELL CARD START -->
             <section class="buy-sell-section pt-100">
                
                         <div class="col-lg-6">
@@ -901,7 +876,7 @@
                                             <h6 class="fw-500 mb-12 white">1BTC is roughly</h6>
                                             <h5 class="fw-700 mb-48 white">53,210 <span class="light-gray">USD</span>
                                             </h5>
-                                            <form action="index.html" class="buy-sell-form">
+                                            <form action="market.html" class="buy-sell-form">
                                                 <div class="input-container mb-24">
                                                     <div class="input-box">
                                                         <input type="text" class="form-control form-control-3" name="price2"
@@ -1001,7 +976,7 @@
                                             <h6 class="fw-500 mb-12 white">1BTC is roughly</h6>
                                             <h5 class="fw-700 mb-48 white">53,210 <span class="light-gray">USD</span>
                                             </h5>
-                                            <form action="index.html" class="buy-sell-form">
+                                            <form action="market.html" class="buy-sell-form">
                                                 <div class="input-container mb-24">
                                                     <div class="input-box">
                                                         <input type="text" class="form-control form-control-3" name="price3"
@@ -1092,16 +1067,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </section>
-            <!-- BUY/SELL CARD END -->
-
-            
-
-            
-
-        <!-- BRAND SLIDER START -->
+                        <!-- BRAND SLIDER START -->
         <div class="brand-container py-100">
             <div class="bg-line"></div>
             <div class="brand-wrapper">
@@ -1142,6 +1108,18 @@
             </div>
         </div>
         <!-- BRAND SLIDER END -->
+                    </div>
+                </div>
+            </section>
+
+            
+    </div> 
+    </section>
+
+
+            
+
+            
 
         <!-- BRAND SECTION START -->
         <section class="brand-sec py-100">
@@ -1276,11 +1254,7 @@
         const { data: { user } } = await db.auth.getUser();
 
         if (user) {
-            // ၁။ UID ဆွဲထည့်မယ်
-            const { data: profile } = await db.from('profiles').select('uid').eq('id', user.id).single();
-            if (profile) {
-                document.getElementById('user-uid').innerText = profile.uid;
-            }
+           
 
             // ၂။ ပိုက်ဆံ ဆွဲထည့်မယ်
             const { data: asset } = await db.from('assets').select('amount').eq('user_id', user.id).single();

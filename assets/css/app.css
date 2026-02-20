@@ -4319,7 +4319,7 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 75px;
+    height: 60px;
     background-color: #191a1f; /* Dashboard Theme Color */
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
@@ -4352,7 +4352,7 @@ body {
 
 /* Active ဖြစ်ရင် စာလုံးအရောင်ပြောင်းမယ် */
 .nav-item.active {
-    color: #1855CA; /* Active Text Color */
+    color: #fff; /* Active Text Color */
 }
 
 /* Active ဖြစ်ရင် Icon နည်းနည်းခုန်မယ် */
