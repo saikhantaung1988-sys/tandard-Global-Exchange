@@ -4262,12 +4262,12 @@ footer .newsletter-container form button {
 /* BUTTONS */
 .btn-login-gold { background:  #141519; 
     border: 1px solid rgba(255, 255, 255, 0.1);
-    width: 175px;
+    width: 150px;
     border-radius: 13px;
     font-weight: 700;
    padding: 20px;
     margin: 0 auto;
-    font-size: 14px;
+    font-size: 13px;
     display: block;
     text-decoration: none;
     margin: 0 auto 5px auto; 
@@ -4279,13 +4279,13 @@ footer .newsletter-container form button {
 .btn-signup-dark {
     background:  #141519; 
     border: 1px solid rgba(255, 255, 255, 0.1);
-    width: 175px;
+    width: 150px;
     font-family: 'Rajdhani', sans-serif;
     font-weight: 700;
     border-radius: 13px;
    padding: 20px;
     margin: 0 auto;
-    font-size: 14px;
+    font-size: 13px;
     display: block;
     text-decoration: none;
 }
