@@ -4194,7 +4194,18 @@ footer .newsletter-container form button {
 
 }
 
+.header-contact-icon {
+  width: 25px;
+  height: 25px;
+  opacity: 0.9;
+}
+.header .navigation {
+  padding: 0 12px;
+}
 
+.header-logo {
+  height: 26px;
+}
 
 /* Mobile Menu Button နေရာလွဲမသွားအောင် ထိန်းမယ် */
 
@@ -4344,8 +4355,8 @@ body {
 
 /* Icon Size (24px standard) */
 .nav-icon {
-    width: 20px;
-    height: 20px;
+    width: 19px;
+    height: 19px;
     margin-bottom: 2px;
     transition: transform 0.2s;
 }

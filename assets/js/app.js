@@ -529,8 +529,8 @@ document.addEventListener("DOMContentLoaded", function() {
         currentIcon = "assets";
     } else if (page === "market.html") {
         currentIcon = "trade";
-    } else if (page === "contact.html") {
-        currentIcon = "finance";
+    } else if (page === "price.html") {
+        currentIcon = "markets";
    } else if (page === "profile.html") {
         currentIcon = "profile";
     }
