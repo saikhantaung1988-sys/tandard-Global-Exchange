@@ -4234,15 +4234,15 @@ footer .newsletter-container form button {
 
 /* HERO SECTION */
 .binance-hero {
-    background-color:rgb(25,26,31);
+    background-color:#0C0C0D;
     padding: 70px 20px 40px 20px;
     text-align: center;
-    border-bottom: 1px solid #2b3139;
+  
 }
 
 /* BIG NUMBERS */
 .trust-number {
-    color :#D9D9D9;
+    color :#fff;
     font-family: 'Rajdhani', sans-serif;
     font-weight: 700;
     font-size: 35px; /* Mobile မှာ အဆင်ပြေမယ့် size */
@@ -4251,7 +4251,7 @@ footer .newsletter-container form button {
 }
 
 .trust-label {
-    color:#D9D9D9;
+    color:#fff;
     font-weight: 800;
     font-size: 15px;
     letter-spacing: 1.5px;
@@ -4260,7 +4260,7 @@ footer .newsletter-container form button {
 }
 
 /* BUTTONS */
-.btn-login-gold { background:  #141519; 
+.btn-login-gold { background:  #191a1f; 
     border: 1px solid rgba(255, 255, 255, 0.1);
     width: 150px;
     border-radius: 13px;
@@ -4277,7 +4277,7 @@ footer .newsletter-container form button {
 
 
 .btn-signup-dark {
-    background:  #141519; 
+    background:  #191a1f; 
     border: 1px solid rgba(255, 255, 255, 0.1);
     width: 150px;
     font-family: 'Rajdhani', sans-serif;
