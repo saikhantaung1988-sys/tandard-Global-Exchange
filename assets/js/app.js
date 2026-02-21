@@ -29,7 +29,7 @@ var MyScroll = "";
       Init.cryptoChart();
       Init.slick();
       Init.categoryToggle();
-      Init.formValidation();
+    
       Init.contactForm();
     },
     w: function (e) {
@@ -471,11 +471,7 @@ var MyScroll = "";
         });
       }
     },
-    formValidation: function () {
-      if ($(".contact-form").length) {
-        $(".contact-form").validate();
-      }
-    },
+  
         contactForm: function () {
       $(".contact-form").on("submit", function (e) {
         e.preventDefault();
