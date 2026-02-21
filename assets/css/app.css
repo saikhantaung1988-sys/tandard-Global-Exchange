@@ -4237,12 +4237,12 @@ footer .newsletter-container form button {
     background-color:#0C0C0D;
     padding: 70px 20px 40px 20px;
     text-align: center;
-  
+    border-bottom: 1px solid #2b3139;
 }
 
 /* BIG NUMBERS */
 .trust-number {
-    color :#fff;
+    color :#Dfff;
     font-family: 'Rajdhani', sans-serif;
     font-weight: 700;
     font-size: 35px; /* Mobile မှာ အဆင်ပြေမယ့် size */
