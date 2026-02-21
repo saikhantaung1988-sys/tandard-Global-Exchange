@@ -4369,12 +4369,12 @@ body {
 }
 
 .hero-slider img{
-  height: 180px;          /* မင်းလိုချင်သလို 160~220 ချိန် */
+  height: 300px;          /* မင်းလိုချင်သလို 160~220 ချိန် */
   object-fit: cover;
 }
 
 .hero-slider .carousel-indicators{
-  margin-bottom: 8px;
+  margin-bottom: auto;
 }
 
 .hero-slider .carousel-indicators [data-bs-target]{
