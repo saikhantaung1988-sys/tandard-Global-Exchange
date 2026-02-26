@@ -822,7 +822,7 @@
 
   <div style="display: flex; align-items: baseline; justify-content: left; gap: 8px;">
     <h1 id="user-balance" style="color: #ffffff; font-size: 25px; font-weight: 700; margin: 0; letter-spacing: -0.5px; font-family: 'Outfit', sans-serif; line-height: 1; text-shadow: 0 0 20px rgba(255,255,255,0.1);">
-      $0.00
+     $0.00
     </h1>
 
     <div style="display: flex; align-items:center; gap: 8px;">
@@ -1237,10 +1237,109 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="assets/js/core.js"></script>
 <script src="assets/js/balance.js"></script>
-
 <script>
-    // Login မဝင်ထားရင် Login စာမျက်နှာကို ပြန်ပို့မယ်
-    checkAccess();
+  (async () => {
+    // Login စစ်မယ် (checkAccess async ဖြစ်နိုင်လို့ await safe)
+    const r = checkAccess();
+    if (r instanceof Promise) await r;
+
+    await loadAssets(); // initial load
+  })();
+
+  async function loadAssets() {
+    // 1) get user
+    const { data, error } = await db.auth.getUser();
+    if (error) { console.error("getUser error:", error); return; }
+
+    const user = data?.user;
+    if (!user) return;
+
+    // 2) fetch from profiles (balance is here now)
+    const { data: profile, error: pErr } = await db
+      .from('profiles')
+      .select('balance')       // add 'uid' or other fields if you want
+      .eq('id', user.id)
+      .single();
+
+    if (pErr) { console.error("profile error:", pErr); return; }
+
+    const balance = Number(profile?.balance ?? 0);
+
+    // UI #1: asset-amount  (ex: "123.00 USDT")
+    const amountEl = document.getElementById('asset-amount');
+    if (amountEl) amountEl.innerText = balance.toFixed(2) + " USDT";
+
+    // UI #2: user-balance  (ex: "$123.00")
+    const balEl = document.getElementById('user-balance');
+    if (balEl) balEl.innerText = "$" + balance.toFixed(2);
+  }
+</script>
+    
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    // get session (better for realtime)
+    const { data: { session }, error: sErr } = await db.auth.getSession();
+    if (sErr) { console.error("getSession error:", sErr); return; }
+    if (!session) return;
+
+    const userId = session.user.id;
+
+    // First load (in case Script #1 ran before elements existed)
+    await safeLoadBalanceOnce(userId);
+
+    // Premium: realtime balance updates
+    subscribeBalanceLive(userId);
+  });
+
+  async function safeLoadBalanceOnce(userId) {
+    const { data: profile, error } = await db
+      .from('profiles')
+      .select('balance')
+      .eq('id', userId)
+      .single();
+
+    if (error) { console.error("profile balance error:", error); return; }
+
+    const balance = Number(profile?.balance ?? 0);
+
+    const amountEl = document.getElementById('asset-amount');
+    if (amountEl) amountEl.innerText = balance.toFixed(2) + " USDT";
+
+    const balEl = document.getElementById('user-balance');
+    if (balEl) balEl.innerText = "$" + balance.toFixed(2);
+  }
+
+  let balanceChannel = null;
+
+  function subscribeBalanceLive(userId) {
+    // avoid duplicate channels
+    if (balanceChannel) db.removeChannel(balanceChannel);
+
+    balanceChannel = db
+      .channel('rt-balance-' + userId)
+      .on(
+        'postgres_changes',
+        {
+          event: 'UPDATE',
+          schema: 'public',
+          table: 'profiles',
+          filter: `id=eq.${userId}`
+        },
+        (payload) => {
+          const next = Number(payload.new?.balance ?? 0);
+
+          const amountEl = document.getElementById('asset-amount');
+          if (amountEl) amountEl.innerText = next.toFixed(2) + " USDT";
+
+          const balEl = document.getElementById('user-balance');
+          if (balEl) balEl.innerText = "$" + next.toFixed(2);
+        }
+      )
+      .subscribe((status) => {
+        // optional debug
+        // console.log("Balance RT status:", status);
+      });
+  }
 </script>
 
 </body>

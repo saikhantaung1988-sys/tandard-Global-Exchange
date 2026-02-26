@@ -2085,8 +2085,82 @@
 <script src="assets/js/core.js"></script>
 
 <script>
-    // Login မဝင်ထားရင် Login စာမျက်နှာကို ပြန်ပို့မယ်
-    checkAccess();
+  (async () => {
+    // 1) db check
+    if (typeof db === "undefined") {
+      console.error("db is not defined. Check core.js loading / variable name.");
+      return;
+    }
+
+    // 2) session guard (မင်း core.js ထဲက function)
+    const r = checkAccess();
+    if (r instanceof Promise) await r;
+
+    // 3) initial load + realtime
+    await loadDashboardBalance();
+    await subscribeBalanceLive();
+  })();
+
+  // --- Premium UI helpers ---
+  function setText(id, text) {
+    const el = document.getElementById(id);
+    if (el) el.innerText = text;
+  }
+
+  // --- 1) Initial fetch: profiles.balance ---
+  async function loadDashboardBalance() {
+    const { data, error } = await db.auth.getUser();
+    if (error) { console.error("getUser error:", error); return; }
+
+    const user = data?.user;
+    if (!user) return;
+
+    // profile (for UID display + balance)
+    const { data: profile, error: pErr } = await db
+      .from('profiles')
+      .select('uid, balance')
+      .eq('id', user.id)
+      .single();
+
+    if (pErr) { console.error("profile error:", pErr); return; }
+
+    if (profile?.uid) setText('header-uid', "UID: " + profile.uid);
+
+    // ✅ balance from profiles.balance
+    const bal = Number(profile?.balance ?? 0);
+    // you said UI shows "$0.00 USDT" — keep it premium formatting
+    setText('user-balance', bal.toFixed(2));
+  }
+
+  // --- 2) Realtime subscribe: profiles balance update (no refresh) ---
+  let balanceChannel = null;
+
+  async function subscribeBalanceLive() {
+    const { data: { session } } = await db.auth.getSession();
+    if (!session) return;
+
+    const userId = session.user.id;
+
+    // avoid duplicate
+    if (balanceChannel) db.removeChannel(balanceChannel);
+
+    balanceChannel = db
+      .channel('rt-balance-' + userId)
+      .on(
+        'postgres_changes',
+        {
+          event: 'UPDATE',
+          schema: 'public',
+          table: 'profiles',
+          filter: `id=eq.${userId}`
+        },
+        (payload) => {
+          const next = Number(payload.new?.balance ?? 0);
+          setText('user-balance', next.toFixed(2));
+        }
+      )
+      .subscribe();
+  }
 </script>
 
     </body>
