@@ -1,8 +1,0 @@
-2026-03-21T21:45:07.7960000Z Job is waiting for a hosted runner to come online.
-2026-03-21T21:45:07.7950000Z Requested labels: ubuntu-latest
-2026-03-21T21:45:07.7950000Z Job defined at: saikhantaung1988-sys/Standard-Global-Exchange/.github/workflows/node.js.yml@refs/heads/main
-2026-03-21T21:45:07.7950000Z Waiting for a runner to pick up this job...
-2026-03-21T21:45:07.7930000Z Evaluating build.if
-2026-03-21T21:45:07.7930000Z Evaluating: success()
-2026-03-21T21:45:07.7930000Z Result: true
-2026-03-21T21:45:07.8010000Z Job is about to start running on the hosted runner: GitHub Actions 1000000002
